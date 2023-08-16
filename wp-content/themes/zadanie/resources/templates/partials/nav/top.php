@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Top nav menu content goes here. Customize it to your needs. How to do it? Read link below :)
  *
@@ -8,8 +9,8 @@
 
 <nav>
 	<?php
-		wp_nav_menu( array(
-			'theme_location' => 'top',
-		) );
+	wp_nav_menu(array(
+		'theme_location' => 'primary', 'container' => 'ul', 'menu_class' => 'nolist d-none d-md-flex'
+	));
 	?>
 </nav>

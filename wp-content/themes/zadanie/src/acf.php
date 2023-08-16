@@ -6,8 +6,13 @@
  */
 
 // define( 'ACF_LITE' , true );
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page();
+if (function_exists('acf_add_options_page')) {
+
+  // Register options page.
+  $option_page = acf_add_options_page(array(
+    'page_title'    => __('Theme General Settings'),
+    'menu_title'    => __('Theme Settings'),
+  ));
 }
 
 // acf fields update & save to the JSON
