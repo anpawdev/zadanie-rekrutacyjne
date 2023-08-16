@@ -1,0 +1,8 @@
+# Temporary files
+.DS_Store
+
+# Project folders
+node_modules/
+
+# Log files
+npm-debug.log

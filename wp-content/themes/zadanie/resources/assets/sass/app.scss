@@ -1,0 +1,30 @@
+@import "settings/variables";
+
+// bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap-reboot";
+
+@import "settings/bootstrap-override";
+@import "../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../node_modules/bootstrap/scss/mixins/deprecate";
+@import "../node_modules/bootstrap/scss/mixins/text-truncate";
+@import "../node_modules/bootstrap/scss/mixins/reset-text";
+
+// Fonts
+// =================================================
+@import "fonts/fonts";
+
+// Generic
+// =================================================
+@import "generic/mixins";
+@import "generic/general";
+@import "generic/typography";
+
+// Partials
+// =================================================
+@import "partials/header";
+@import "partials/footer";
+
+// Components
+// =================================================
+@import "components/hero";
+@import "components/buttons";

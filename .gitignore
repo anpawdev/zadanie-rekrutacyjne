@@ -1,0 +1,19 @@
+# Ignore everything in the root except
+# of git and repository specific files.
+/*
+!.git
+!.gitignore
+!README.md
+
+# Ignore all files inside `wp-content` ...
+!wp-content
+wp-content/*
+# ... except directories with plugins and theme.
+!wp-content/plugins/
+!wp-content/themes/
+
+# Ignore development specific directories.
+.svn
+
+# Ignore useless dot and temp files.
+/wp-content/themes/twentytwentyone
