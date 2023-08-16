@@ -1,16 +1,16 @@
 body {
   font-family: $primaryfont;
-  background: $white;
-  color: $black;
+  background: $beige;
+  color: $dark;
   margin: 0;
 }
 
 a {
-  color: $black;
+  color: $dark;
   text-decoration: none;
 
   &:hover {
-    color: $black;
+    color: $dark;
   }
 
   &:focus {
