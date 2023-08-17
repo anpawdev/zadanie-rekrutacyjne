@@ -8,8 +8,7 @@
 @import "../node_modules/bootstrap/scss/mixins/deprecate";
 @import "../node_modules/bootstrap/scss/mixins/text-truncate";
 @import "../node_modules/bootstrap/scss/mixins/reset-text";
-@import "../node_modules/bootstrap/scss/utilities";
-@import "../node_modules/bootstrap/scss/utilities/api";
+@import "../node_modules/bootstrap/scss/carousel";
 
 // Fonts
 // =================================================
@@ -30,3 +29,8 @@
 // =================================================
 @import "components/hero";
 @import "components/buttons";
+@import "components/box";
+
+// Sections
+// =================================================
+@import "sections/intro.scss";

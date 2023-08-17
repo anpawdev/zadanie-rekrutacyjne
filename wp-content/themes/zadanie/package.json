@@ -16,7 +16,9 @@
     "lint": "npm run sass:lint && npm run javascript:lint"
   },
   "dependencies": {
-    "bootstrap": "^5.3.1"
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "@tonik/eslint-config": "^1.1.1",
