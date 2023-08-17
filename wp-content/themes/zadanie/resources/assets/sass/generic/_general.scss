@@ -1,16 +1,17 @@
 body {
   font-family: $primaryfont;
-  background: $white;
-  color: $black;
+  background: $beige;
+  color: $dark;
   margin: 0;
 }
 
 a {
-  color: $black;
+  color: $dark;
   text-decoration: none;
 
   &:hover {
-    color: $black;
+    color: inherit;
+    text-decoration: none;
   }
 
   &:focus {
@@ -58,4 +59,8 @@ a {
 
 .h-100 {
   height: 100%;
+}
+
+.bg-beige {
+  background-color: $primarycolor;
 }
