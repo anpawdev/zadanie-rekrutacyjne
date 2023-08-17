@@ -4,7 +4,7 @@
  * @package 
  */
 ?>
-<section class="hero">
+<section class="hero bg-beige">
   <div class="container-fluid position-relative box-fluid">
     <div class="container">
       <div class="row d-md-flex d-block">
@@ -15,7 +15,7 @@
               <?php while (have_rows('slider')) : the_row();
                 $image = get_sub_field('slider_image');
               ?>
-              <!-- slider item -->
+                <!-- slider item -->
                 <div class="carousel-item <?php if (get_row_index() === 1) : ?> active<?php endif; ?>">
                   <div class="col-md-6 position-md-absolute right-box h-100">
                     <div class="image">
@@ -27,12 +27,11 @@
                     </div>
                   </div>
 
-                  <div class="col-md-5">
+                  <div class="col-md-6">
                     <h1><?php the_sub_field('slider_heading'); ?></h1>
                     <p><?php the_sub_field('slider_content'); ?></p>
                     <div class="d-flex">
                       <?php if (have_rows('slider_buttons')) : ?>
-                        <div class="slides">
                           <?php while (have_rows('slider_buttons')) : the_row();
                           ?>
                             <?php
@@ -42,15 +41,14 @@
                               $link_title = $link['title'];
                               $link_target = $link['target'] ? $link['target'] : '_self';
                             ?>
-                              <a class="button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                              <a class="btn d-inline-block <?php if(get_row_index() === 1):?> btn-primary text-white mr-4 <?php else:?> btn-outline <?php endif;?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
                             <?php endif; ?>
                           <?php endwhile; ?>
-                        </div>
                       <?php endif; ?>
                     </div>
                   </div>
                 </div>
-              <!-- end slider item -->
+                <!-- end slider item -->
               <?php endwhile; ?>
             </div>
 

@@ -10,7 +10,8 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: $dark;
+    color: inherit;
+    text-decoration: none;
   }
 
   &:focus {
@@ -58,4 +59,8 @@ a {
 
 .h-100 {
   height: 100%;
+}
+
+.bg-beige {
+  background-color: $primarycolor;
 }
