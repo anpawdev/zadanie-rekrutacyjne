@@ -4,7 +4,7 @@
  * @package 
  */
 ?>
-<section class="hero bg-beige">
+<!-- <section class="hero bg-beige">
   <div class="container-fluid position-relative box-fluid">
     <div class="container">
       <div class="row d-md-flex d-block">
@@ -67,4 +67,4 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->

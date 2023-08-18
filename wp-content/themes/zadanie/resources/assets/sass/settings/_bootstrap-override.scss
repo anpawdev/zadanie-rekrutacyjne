@@ -8,7 +8,7 @@ $spacers: (
   5: ($spacer * 3),
   5rem: ($spacer * 2.5),
   6: ($spacer * 4),
-  6rem: ($spacer * 3.5),
+  6rem: ($spacer * 3.7),
   7: ($spacer * 5),
   7rem: ($spacer * 4.5),
   8: ($spacer * 5.5),
@@ -26,3 +26,6 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1441px
 );
+
+$grid-columns: 12;
+$grid-gutter-width: 64px;

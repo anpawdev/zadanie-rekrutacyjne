@@ -1,3 +1,17 @@
 .footer {
   background-color: $dark;
+
+  &__main {
+    border-bottom: 1px solid $beige;
+  }
+
+  &__links {
+    margin-right: 2.68rem;
+  }
+
+  &__cta {
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
 }
