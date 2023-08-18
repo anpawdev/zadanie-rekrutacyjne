@@ -1,1 +1,16 @@
-//
+nav {
+  li {
+    margin-right: 3rem;
+  }
+
+  .sub-menu {
+    list-style: none;
+    padding: 0;
+    background-color: $white;
+    display: none;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

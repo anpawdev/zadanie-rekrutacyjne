@@ -51,6 +51,10 @@ a {
 
 .container {
   max-width: 1262px;
+
+  @include media-breakpoint-up(xl) {
+    padding: 0;
+  }
 }
 
 .w-100 {

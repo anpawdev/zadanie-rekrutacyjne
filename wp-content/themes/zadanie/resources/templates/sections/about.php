@@ -4,7 +4,7 @@
  * @package 
  */
 ?>
-<section class="about bg-green">
+<section class="about bg-green mb-11">
   <div class="container-fluid position-relative box-fluid">
     <div class="container">
       <div class="row d-md-flex d-block">
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 offset-md-6 text-white">
+        <div class="col-md-6 offset-md-6 text-white py-11">
           <span><?php the_sub_field('about_heading'); ?><span>
               <?php the_sub_field('about_title'); ?>
               <p><?php the_sub_field('about_content'); ?></p>
