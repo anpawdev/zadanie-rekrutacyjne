@@ -41,7 +41,7 @@
                               $link_title = $link['title'];
                               $link_target = $link['target'] ? $link['target'] : '_self';
                             ?>
-                              <a class="btn d-inline-block <?php if(get_row_index() === 1):?> btn-primary text-white mr-4 <?php else:?> btn-outline <?php endif;?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                              <a class="btn d-inline-block <?php if(get_row_index() === 1):?> btn-primary text-white mr-4 <?php else:?> btn-outline btn-border <?php endif;?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
                             <?php endif; ?>
                           <?php endwhile; ?>
                       <?php endif; ?>

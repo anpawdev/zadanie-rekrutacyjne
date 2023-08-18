@@ -4,7 +4,7 @@
  * 
  */
 ?>
-<footer class="footer text-white">
+<footer class="footer text-white py-7">
 	<div class="container">
 		<div class="row">
 			<div class="footer-main col-12">
@@ -21,7 +21,7 @@
 							$link_title = $link['title'];
 							$link_target = $link['target'] ? $link['target'] : '_self';
 						?>
-							<a class="btn d-inline-block btn-primary text-white" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+							<a class="btn btn-primary text-white" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -52,7 +52,9 @@
 					<p><?php the_field('copyright', 'options'); ?></p>
 					<div>
 						<span>made by</span>
-						<img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/images/icons/icon-full-light.svg" alt="icon">
+						<a href="https://adrespect.pl/" target="_blank" rel="noopener noreferrer nofollow">
+							<img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/images/icons/logo-full-light.svg" alt="icon">
+						</a>
 					</div>
 				</div>
 			</div>

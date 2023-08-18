@@ -7461,7 +7461,7 @@ a.text-dark:hover, a.text-dark:focus {
   src: url("../fonts/Inter-Regular.ttf") format("truetype"); }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Inter Medium Italic";
   font-display: swap;
   font-weight: 500;
   font-style: italic;
@@ -7531,9 +7531,11 @@ a {
 .bg-beige {
   background-color: #dcc1ab; }
 
+.bg-green {
+  background-color: #1b5b31; }
+
 h1,
 h2,
-h3,
 h4 {
   font-weight: 500;
   font-family: "Montserrat", sans-serif; }
@@ -7554,6 +7556,9 @@ h2 {
       line-height: 2.375rem; } }
 
 h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  letter-spacing: -2px;
   font-size: 2.5rem; }
   @media (max-width: 991.98px) {
     h3 {
@@ -7583,6 +7588,10 @@ a {
       font-size: 0.75rem;
       line-height: 1rem; } }
 
+em {
+  font-family: "Inter Medium Italic", sans-serif;
+  letter-spacing: 1px; }
+
 .footer {
   background-color: #111; }
 
@@ -7597,11 +7606,19 @@ a {
     padding: 0.75rem 1.5rem 0.875rem; }
   .btn-outline {
     border: 1px solid #1b5b31;
-    color: #1b5b31;
-    padding: 0.75rem 1.375rem 0.875rem; }
+    color: #1b5b31; }
     .btn-outline:hover {
       color: #fff;
       background-color: #1b5b31; }
+  .btn-border {
+    padding: 0.75rem 1.375rem 0.875rem; }
+  .btn-outline--border {
+    border: 1px solid #fff; }
+  .btn-white {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #1b5b31;
+    padding: 0.625rem 1.5rem 0.75rem; }
 
 .box-fluid .left-box,
 .box-fluid .right-box {

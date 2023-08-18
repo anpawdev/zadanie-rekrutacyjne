@@ -447,6 +447,72 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_64defa8f9e7e9": {
+                    "key": "layout_64defa8f9e7e9",
+                    "name": "baner_page_home",
+                    "label": "Baner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_64defa909e7ec",
+                            "label": "Tytuł sekcji",
+                            "name": "baner_title",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_64defa909e7ed",
+                            "label": "Tekst",
+                            "name": "baner_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_64defa909e7ee",
+                            "label": "Button",
+                            "name": "baner_cta",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -472,5 +538,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1692292315
+    "modified": 1692334811
 }

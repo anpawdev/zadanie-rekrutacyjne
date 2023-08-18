@@ -12,11 +12,25 @@
   &-outline {
     border: 1px solid $secondarycolor;
     color: $secondarycolor;
-    padding: 0.75rem 1.375rem 0.875rem;
 
     &:hover {
       color: $white;
       background-color: $secondarycolor;
     }
+  }
+
+  &-border {
+    padding: 0.75rem 1.375rem 0.875rem;
+  }
+
+  &-outline--border {
+    border: 1px solid $white;
+  }
+
+  &-white {
+    background-color: $white;
+    border: 1px solid $white;
+    color: $secondarycolor;
+    padding: 0.625rem 1.5rem 0.75rem;
   }
 }

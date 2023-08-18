@@ -1,6 +1,5 @@
 h1,
 h2,
-h3,
 h4 {
   font-weight: 500;
   font-family: $secondaryfont;
@@ -26,6 +25,10 @@ h2 {
 }
 
 h3 {
+  font-family: $secondaryfont;
+  font-weight: 400;
+  letter-spacing: -2px;
+
   @include fontSize(40);
 
   @include media-breakpoint-down(md) {
@@ -61,4 +64,9 @@ a {
     @include fontSize(12);
     @include lineHeight(16);
   }
+}
+
+em {
+  font-family: $italicfont;
+  letter-spacing: 1px;
 }
