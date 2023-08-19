@@ -12,7 +12,7 @@
 			</a>
 			<div class="d-flex align-items-center">
 				<?php get_template_part('resources/templates/partials/nav/top'); ?>
-				<button class="bg-transparent border-0">
+				<button class="bg-transparent border-0 px-0">
 					<img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/images/icons/icon-search.svg" alt="search">
 				</button>
 			</div>

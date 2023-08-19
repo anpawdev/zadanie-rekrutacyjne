@@ -7910,6 +7910,9 @@ a {
   display: block;
   font-size: 0.75rem; }
 
+.open {
+  display: block !important; }
+
 h1,
 h2,
 h4 {
@@ -7983,11 +7986,27 @@ nav li {
 
 nav .sub-menu {
   list-style: none;
-  padding: 0;
+  position: absolute;
+  z-index: 2;
   background-color: #fff;
-  display: none; }
+  display: none;
+  left: -1rem;
+  padding: 1.5rem 1rem;
+  min-width: 14rem; }
   nav .sub-menu li {
     margin-bottom: 0.5rem; }
+
+nav .menu-item-has-children {
+  position: relative;
+  margin-right: 4rem !important; }
+  nav .menu-item-has-children::after {
+    content: "";
+    background: url("../images/icons/arrow-down.svg") no-repeat;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    right: -1rem;
+    top: 0.5rem; }
 
 .footer {
   background-color: #111; }
@@ -8035,7 +8054,8 @@ nav .sub-menu {
     text-decoration: none; }
   .btn-primary {
     background-color: #1b5b31;
-    padding: 0.75rem 1.5rem 0.875rem; }
+    padding: 0.75rem 1.5rem 0.875rem;
+    border: 1px solid transparent; }
     .btn-primary:hover {
       color: #1b5b31;
       background-color: transparent;

@@ -11325,5 +11325,12 @@ var carousel = createCommonjsModule(function (module, exports) {
 });
 
 //
+var menuLink = document.querySelector('.menu-item-has-children');
+var submenu = document.querySelector('.sub-menu');
+
+menuLink.addEventListener('click', function (e) {
+  e.preventDefault();
+  submenu.classList.toggle('open');
+});
 
 }());

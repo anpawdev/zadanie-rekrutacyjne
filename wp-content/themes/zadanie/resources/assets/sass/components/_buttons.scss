@@ -11,6 +11,7 @@
   &-primary {
     background-color: $secondarycolor;
     padding: 0.75rem 1.5rem 0.875rem;
+    border: 1px solid transparent;
 
     &:hover {
       color: $secondarycolor;

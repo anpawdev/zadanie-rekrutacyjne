@@ -86,3 +86,7 @@ a {
 
   @include fontSize(12);
 }
+
+.open {
+  display: block !important;
+}
