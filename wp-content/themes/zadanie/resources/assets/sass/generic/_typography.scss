@@ -38,6 +38,7 @@ h3 {
   letter-spacing: -2px;
 
   @include fontSize(40);
+  @include lineHeight(48);
 
   @include media-breakpoint-down(md) {
     @include fontSize(26);
