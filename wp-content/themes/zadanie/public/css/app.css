@@ -7858,6 +7858,8 @@ a {
     color: inherit; }
   a:focus {
     outline: none; }
+  a svg {
+    margin: 0 0 3px 4px; }
 
 #app {
   overflow: hidden; }
@@ -8044,15 +8046,25 @@ nav .sub-menu {
     .btn-outline:hover {
       color: #fff;
       background-color: #1b5b31; }
+      .btn-outline:hover svg path {
+        fill: #fff; }
   .btn-border {
     padding: 0.75rem 1.375rem 0.875rem; }
   .btn-outline--border {
     border: 1px solid #fff; }
+    .btn-outline--border:hover {
+      background-color: #fff;
+      color: #1b5b31; }
+      .btn-outline--border:hover svg path {
+        fill: #1b5b31; }
   .btn-white {
     background-color: #fff;
     border: 1px solid #fff;
     color: #1b5b31;
     padding: 0.625rem 1.5rem 0.75rem; }
+  .btn-green:hover {
+    background-color: #fff;
+    color: #1b5b31; }
 
 .box-fluid .left-box,
 .box-fluid .right-box {

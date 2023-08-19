@@ -26,6 +26,10 @@
     &:hover {
       color: $white;
       background-color: $secondarycolor;
+
+      svg path {
+        fill: $white;
+      }
     }
   }
 
@@ -35,6 +39,14 @@
 
   &-outline--border {
     border: 1px solid $white;
+
+    &:hover {
+      @include colors-hover;
+
+      svg path {
+        fill: $secondarycolor;
+      }
+    }
   }
 
   &-white {
@@ -42,5 +54,11 @@
     border: 1px solid $white;
     color: $secondarycolor;
     padding: 0.625rem 1.5rem 0.75rem;
+  }
+
+  &-green {
+    &:hover {
+      @include colors-hover;
+    }
   }
 }

@@ -47,7 +47,13 @@
                             $link_title = $link['title'];
                             $link_target = $link['target'] ? $link['target'] : '_self';
                           ?>
-                            <a class="btn d-inline-block  mb-lg-0 mb-3  <?php if (get_row_index() === 1) : ?> btn-primary text-white mr-4<?php else : ?> btn-outline btn-border <?php endif; ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                            <a class="btn d-inline-block  mb-lg-0 mb-3  <?php if (get_row_index() === 1) : ?> btn-primary text-white mr-4<?php else : ?> btn-outline btn-border <?php endif; ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?>
+                              <?php if (get_row_index() === 2) : ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                  <path d="M16 8.49529L15.1043 7.59959L8.63642 14.0769L8.63642 0.5L7.36358 0.5L7.36358 14.0675L0.895699 7.59959L9.54553e-08 8.49529L8.00471 16.5L16 8.49529Z" fill="#1B5B31" />
+                                </svg>
+                              <?php endif; ?>
+                            </a>
                           <?php endif; ?>
                         <?php endwhile; ?>
                       <?php endif; ?>

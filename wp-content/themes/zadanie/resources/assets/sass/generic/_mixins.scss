@@ -9,3 +9,8 @@
 
   line-height: $size/$root + rem;
 }
+
+@mixin colors-hover {
+  background-color: $white;
+  color: $secondarycolor;
+}

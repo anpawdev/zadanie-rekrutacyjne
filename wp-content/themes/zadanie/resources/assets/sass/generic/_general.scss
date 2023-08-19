@@ -16,6 +16,10 @@ a {
   &:focus {
     outline: none;
   }
+
+  svg {
+    margin: 0 0 3px 4px;
+  }
 }
 
 #app {
