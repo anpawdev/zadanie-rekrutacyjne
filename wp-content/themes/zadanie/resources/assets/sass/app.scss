@@ -14,7 +14,6 @@
 @import "../node_modules/bootstrap/scss/utilities/text";
 @import "../node_modules/bootstrap/scss/utilities/borders";
 @import "../node_modules/bootstrap/scss/utilities/overflow";
-@import "../node_modules/bootstrap/scss/grid";
 
 // Fonts
 // =================================================
@@ -37,7 +36,8 @@
 @import "components/buttons";
 @import "components/box";
 @import "components/slider";
+@import "components/animation";
 
 // Sections
 // =================================================
-@import "sections/intro.scss";
+@import "sections/offer.scss";
