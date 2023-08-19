@@ -8018,8 +8018,38 @@ em {
   font-family: "Inter Medium Italic", sans-serif;
   letter-spacing: 1px; }
 
-nav li {
-  margin-right: 3rem; }
+@media (max-width: 767.98px) {
+  nav {
+    position: absolute;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9;
+    -webkit-transition: 400ms ease;
+    -o-transition: 400ms ease;
+    transition: 400ms ease;
+    top: 0;
+    padding: 4rem 3rem; } }
+
+nav.open {
+  height: 100%;
+  -webkit-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
+  top: 0; }
+  nav.open > ul {
+    display: block !important; }
+    nav.open > ul li a {
+      font-size: 1rem; }
+
+@media (min-width: 768px) {
+  nav li {
+    margin-right: 3rem; } }
+
+@media (max-width: 767.98px) {
+  nav li {
+    margin-bottom: 0.5rem; } }
 
 nav .sub-menu {
   list-style: none;
@@ -8030,12 +8060,19 @@ nav .sub-menu {
   left: -1rem;
   padding: 1.5rem 1rem;
   min-width: 14rem; }
+  @media (max-width: 767.98px) {
+    nav .sub-menu {
+      position: relative;
+      padding: 1rem 2rem 0.5rem; } }
   nav .sub-menu li {
     margin-bottom: 0.5rem; }
 
 nav .menu-item-has-children {
   position: relative;
   margin-right: 4rem !important; }
+  @media (max-width: 767.98px) {
+    nav .menu-item-has-children {
+      margin-right: 8rem !important; } }
   nav .menu-item-has-children::after {
     content: "";
     background: url("../images/icons/arrow-down.svg") no-repeat;
@@ -8044,6 +8081,9 @@ nav .menu-item-has-children {
     height: 12px;
     right: -1rem;
     top: 0.5rem; }
+    @media (max-width: 767.98px) {
+      nav .menu-item-has-children::after {
+        right: 0; } }
 
 .footer {
   background-color: #111; }
@@ -8219,7 +8259,7 @@ input {
 
 .header__hamburger {
   cursor: pointer;
-  z-index: 100;
+  z-index: 9;
   width: 30px;
   height: 27px;
   top: 0;
@@ -8229,13 +8269,49 @@ input {
     width: 27px;
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
-    transition: 0.4s; }
+    transition: 0.4s;
+    margin-bottom: 0.25rem; }
     .header__hamburger .line-menu:first-of-type {
       left: 5px;
       width: 19px; }
     .header__hamburger .line-menu:last-of-type {
       width: 20px;
       right: 0; }
+  .header__hamburger.active {
+    position: absolute;
+    top: 23px;
+    right: 33px;
+    z-index: 10; }
+    .header__hamburger.active .line-menu {
+      background: #111; }
+      .header__hamburger.active .line-menu:first-of-type {
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transition: 0.4s -webkit-transform;
+        transition: 0.4s -webkit-transform;
+        -o-transition: 0.4s transform;
+        transition: 0.4s transform;
+        transition: 0.4s transform, 0.4s -webkit-transform;
+        margin-bottom: 10px;
+        left: 0 !important;
+        position: static;
+        width: 19px;
+        height: 2px; }
+      .header__hamburger.active .line-menu:nth-of-type(2) {
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: 0.4s -webkit-transform;
+        transition: 0.4s -webkit-transform;
+        -o-transition: 0.4s transform;
+        transition: 0.4s transform;
+        transition: 0.4s transform, 0.4s -webkit-transform;
+        margin-bottom: -2px;
+        width: 19px;
+        height: 2px; }
+      .header__hamburger.active .line-menu:last-of-type {
+        opacity: 0; }
 
 .offer__wrapper {
   display: grid;

@@ -16,3 +16,11 @@ btnSearch.addEventListener('click', () => {
   btnSearch.classList.add('d-none')
   searchForm.classList.remove('d-none')
 })
+
+const hamburger = document.querySelector('.header__hamburger')
+const navigation = document.querySelector('nav')
+
+hamburger.addEventListener('click', () => {
+  navigation.classList.toggle('open')
+  hamburger.classList.toggle('active')
+})

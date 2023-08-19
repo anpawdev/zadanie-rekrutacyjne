@@ -11341,4 +11341,12 @@ btnSearch.addEventListener('click', function () {
   searchForm.classList.remove('d-none');
 });
 
+var hamburger = document.querySelector('.header__hamburger');
+var navigation = document.querySelector('nav');
+
+hamburger.addEventListener('click', function () {
+  navigation.classList.toggle('open');
+  hamburger.classList.toggle('active');
+});
+
 }());

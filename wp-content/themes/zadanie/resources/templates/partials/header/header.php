@@ -18,9 +18,9 @@
 				</button>
 			</div>
 			<div class="header__hamburger d-flex flex-column-reverse align-items-end position-relative overflow-hidden ml-auto d-md-none">
-				<span class="line-menu bg-dark d-block mb-1 position-relative"></span>
-				<span class="line-menu bg-dark d-block mb-1"></span>
-				<span class="line-menu bg-dark d-block mb-1 position-relative"></span>
+				<span class="line-menu bg-dark d-block position-relative"></span>
+				<span class="line-menu bg-dark d-block"></span>
+				<span class="line-menu bg-dark d-block position-relative"></span>
 			</div>
 		</div><!-- .row -->
 	</div><!-- .container -->

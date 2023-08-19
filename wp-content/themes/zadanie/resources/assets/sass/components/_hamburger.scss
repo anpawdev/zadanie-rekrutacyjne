@@ -1,6 +1,6 @@
 .header__hamburger {
   cursor: pointer;
-  z-index: 100;
+  z-index: 9;
   width: 30px;
   height: 27px;
   top: 0;
@@ -10,6 +10,7 @@
     height: 3px;
     width: 27px;
     transition: 0.4s;
+    margin-bottom: 0.25rem;
 
     &:first-of-type {
       left: 5px;
@@ -19,6 +20,39 @@
     &:last-of-type {
       width: 20px;
       right: 0;
+    }
+  }
+
+  &.active {
+    position: absolute;
+    top: 23px;
+    right: 33px;
+    z-index: 10;
+
+    .line-menu {
+      background: $dark;
+
+      &:first-of-type {
+        transform: rotate(-45deg);
+        transition: 0.4s transform;
+        margin-bottom: 10px;
+        left: 0 !important;
+        position: static;
+        width: 19px;
+        height: 2px;
+      }
+
+      &:nth-of-type(2) {
+        transform: rotate(45deg);
+        transition: 0.4s transform;
+        margin-bottom: -2px;
+        width: 19px;
+        height: 2px;
+      }
+
+      &:last-of-type {
+        opacity: 0;
+      }
     }
   }
 }
