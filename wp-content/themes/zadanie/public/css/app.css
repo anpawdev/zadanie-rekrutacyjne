@@ -7884,7 +7884,7 @@ a {
 
 .container {
   max-width: 1262px; }
-  @media (min-width: 1200px) {
+  @media (min-width: 1441px) {
     .container {
       padding: 0; } }
 
@@ -7900,9 +7900,11 @@ a {
 .bg-green {
   background-color: #1b5b31; }
 
+.text-green {
+  color: #1b5b31; }
+
 .title {
-  color: #1b5b31;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9rem;
   display: block;
   font-size: 0.75rem; }
 
@@ -7922,8 +7924,9 @@ h1 {
 
 h2 {
   letter-spacing: -1px;
-  margin-bottom: 1.25rem;
-  font-size: 3rem; }
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  line-height: 3.4375rem; }
   @media (max-width: 991.98px) {
     h2 {
       font-size: 1.875rem;
@@ -8003,7 +8006,7 @@ nav .sub-menu {
 
 .hero__text {
   padding: 3rem 1rem 3rem 0; }
-  @media (min-width: 1200px) {
+  @media (min-width: 1441px) {
     .hero__text {
       padding: 9rem 5rem 9rem 2rem; } }
   .hero__text p {
@@ -8014,16 +8017,10 @@ nav .sub-menu {
         margin: 2.9rem 3rem 4.4rem 0; } }
 
 .hero__image {
-  max-height: 737px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  max-width: 100%; }
+  max-height: 737px; }
   @media (min-width: 768px) and (max-width: 991.98px) {
     .hero__image {
       max-height: 462px; } }
-  @media (max-width: 767.98px) {
-    .hero__image {
-      height: auto; } }
 
 .btn {
   border-radius: 12.5rem;
@@ -8066,6 +8063,14 @@ nav .sub-menu {
   width: 100vw;
   padding: 0; }
 
+.box-fluid img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  max-width: 100%; }
+  @media (max-width: 767.98px) {
+    .box-fluid img {
+      height: auto; } }
+
 @media (min-width: 768px) {
   .box-fluid .left-box,
   .box-fluid .right-box {
@@ -8074,7 +8079,7 @@ nav .sub-menu {
     width: auto; }
   .box-fluid .left-box {
     left: 0;
-    right: 50%; }
+    right: 51.5%; }
   .box-fluid .right-box {
     right: 0;
     left: 51.5%; } }
@@ -8169,10 +8174,31 @@ nav .sub-menu {
       height: 1px;
       bottom: -6px; }
   .offer__box p {
-    margin-bottom: 63px;
+    margin-bottom: 67px;
     font-size: 0.875rem;
     line-height: 1.25rem; }
 
 .offer figure {
   margin-bottom: 2rem;
   height: 40px; }
+
+.about {
+  overflow: hidden; }
+  .about__image {
+    max-height: 720px; }
+    @media (max-width: 1440.98px) {
+      .about__image {
+        min-height: 860px; } }
+    @media (max-width: 991.98px) {
+      .about__image {
+        min-height: 100%; } }
+  .about__content {
+    padding: 7.875rem 0 8.25rem 8.063rem; }
+    @media (max-width: 991.98px) {
+      .about__content {
+        padding: 3rem; } }
+    @media (max-width: 767.98px) {
+      .about__content {
+        padding: 3rem 1rem 3rem 0; } }
+    .about__content p {
+      margin: 2.5rem 1.875rem 4.56rem 0; }

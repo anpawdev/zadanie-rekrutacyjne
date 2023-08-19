@@ -17,9 +17,10 @@ h1 {
 
 h2 {
   letter-spacing: -1px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 
   @include fontSize(48);
+  @include lineHeight(55);
 
   @include media-breakpoint-down(md) {
     @include fontSize(30);

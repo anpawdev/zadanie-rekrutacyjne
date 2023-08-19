@@ -51,7 +51,7 @@ a {
 .container {
   max-width: 1262px;
 
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xxl) {
     padding: 0;
   }
 }
@@ -72,9 +72,12 @@ a {
   background-color: $secondarycolor;
 }
 
-.title {
+.text-green {
   color: $secondarycolor;
-  margin-bottom: 0.5rem;
+}
+
+.title {
+  margin-bottom: 0.9rem;
   display: block;
 
   @include fontSize(12);

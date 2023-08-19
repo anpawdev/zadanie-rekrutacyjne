@@ -9,6 +9,15 @@
     width: 100vw;
     padding: 0;
   }
+
+  img {
+    object-fit: cover;
+    max-width: 100%;
+
+    @include media-breakpoint-down(sm) {
+      height: auto;
+    }
+  }
 }
 
 @include media-breakpoint-up(md) {
@@ -22,7 +31,7 @@
 
     .left-box {
       left: 0;
-      right: 50%;
+      right: 51.5%;
     }
 
     .right-box {

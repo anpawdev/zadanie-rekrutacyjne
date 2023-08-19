@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row d-md-flex d-block">
       <div class="offset-md-1 col-md-7">
-        <span class="title"><?php the_sub_field('section_title'); ?></span>
+        <span class="title text-green"><?php the_sub_field('section_title'); ?></span>
         <?php the_sub_field('section_heading'); ?>
         <p><?php the_sub_field('section_description'); ?></p>
       </div>
@@ -36,7 +36,7 @@
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/public/images/icons/arrow-green.svg" alt="arrow" class="ml-2 arrow-animate">
                   </a>
                 <?php endif; ?>
-                </div>
+            </div>
           <?php endwhile; ?>
         <?php endif; ?>
       </div>

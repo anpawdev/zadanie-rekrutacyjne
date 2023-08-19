@@ -1,0 +1,31 @@
+.about {
+  overflow: hidden;
+
+  &__image {
+    max-height: 720px;
+
+    @include media-breakpoint-down(xl) {
+      min-height: 860px;
+    }
+
+    @include media-breakpoint-down(md) {
+      min-height: 100%;
+    }
+  }
+
+  &__content {
+    padding: 7.875rem 0 8.25rem 8.063rem;
+
+    @include media-breakpoint-down(md) {
+      padding: 3rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: 3rem 1rem 3rem 0;
+    }
+
+    p {
+      margin: 2.5rem 1.875rem 4.56rem 0;
+    }
+  }
+}

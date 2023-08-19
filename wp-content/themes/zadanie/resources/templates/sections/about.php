@@ -16,16 +16,16 @@
             $size = 'full';
 
             if ($image) {
-              echo wp_get_attachment_image($image, $size, "", ["class" => "img-fluid"]);
+              echo wp_get_attachment_image($image, $size, "", ["class" => "about__image"]);
             }; ?>
           </div>
         </div>
 
-        <div class="col-md-6 offset-md-6 text-white py-11">
-          <span><?php the_sub_field('about_heading'); ?><span>
-              <?php the_sub_field('about_title'); ?>
-              <p><?php the_sub_field('about_content'); ?></p>
-              <?php
+        <div class="about__content col-md-6 offset-md-6 text-white">
+          <span class="title mt-2"><?php the_sub_field('about_heading'); ?></span>
+            <?php the_sub_field('about_title'); ?>
+            <p><?php the_sub_field('about_content'); ?></p>
+            <?php
               $link = get_sub_field('about_button_cta');
               if ($link) :
                 $link_url = $link['url'];
