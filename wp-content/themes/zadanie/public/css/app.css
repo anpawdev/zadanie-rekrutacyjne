@@ -7544,6 +7544,12 @@ a.text-dark:hover, a.text-dark:focus {
 .rounded-0 {
   border-radius: 0 !important; }
 
+.overflow-auto {
+  overflow: auto !important; }
+
+.overflow-hidden {
+  overflow: hidden !important; }
+
 .container,
 .container-fluid,
 .container-sm,
@@ -8942,6 +8948,23 @@ nav .sub-menu {
     .footer__cta {
       width: 100%; } }
 
+@media (min-width: 1200px) {
+  .hero .carousel, .hero {
+    min-height: 737px; } }
+
+.hero__text {
+  padding-top: 9rem;
+  padding-right: 5rem;
+  padding-bottom: 9rem; }
+  .hero__text p {
+    margin: 2.9rem 3rem 4.4rem 0;
+    letter-spacing: 0; }
+
+.hero img {
+  max-height: 737px;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
 .btn {
   border-radius: 12.5rem;
   -webkit-transition: 0.2s;
@@ -8991,3 +9014,32 @@ nav .sub-menu {
   .box-fluid .right-box {
     right: 0;
     left: 50%; } }
+
+.carousel-inner {
+  overflow: visible !important; }
+
+.carousel-control {
+  width: 6rem;
+  height: 6rem;
+  opacity: 1;
+  position: absolute;
+  bottom: 0;
+  top: auto; }
+  .carousel-control-prev {
+    right: 96px;
+    left: auto; }
+  .carousel-control-icon::before {
+    content: "";
+    position: absolute;
+    background: url("../images/icons/arrow-slider.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+  .carousel-control-next-icon {
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg); }

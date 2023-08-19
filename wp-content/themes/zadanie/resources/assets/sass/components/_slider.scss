@@ -1,0 +1,32 @@
+.carousel-inner {
+  overflow: visible !important;
+}
+
+.carousel-control {
+  width: 6rem;
+  height: 6rem;
+  opacity: 1;
+  position: absolute;
+  bottom: 0;
+  top: auto;
+
+  &-prev {
+    right: 96px;
+    left: auto;
+  }
+
+  &-icon::before {
+    content: "";
+    position: absolute;
+    background: url("../images/icons/arrow-slider.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &-next-icon {
+    transform: rotate(-180deg);
+  }
+}

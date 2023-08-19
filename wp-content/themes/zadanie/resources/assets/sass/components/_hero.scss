@@ -1,1 +1,24 @@
-//
+.hero {
+  .carousel,
+  & {
+    @include media-breakpoint-up(xl) {
+      min-height: 737px;
+    }
+  }
+
+  &__text {
+    padding-top: 9rem;
+    padding-right: 5rem;
+    padding-bottom: 9rem;
+
+    p {
+      margin: 2.9rem 3rem 4.4rem 0;
+      letter-spacing: 0;
+    }
+  }
+
+  img {
+    max-height: 737px;
+    object-fit: cover;
+  }
+}
