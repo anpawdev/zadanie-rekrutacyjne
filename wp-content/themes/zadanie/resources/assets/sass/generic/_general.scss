@@ -71,3 +71,11 @@ a {
 .bg-green {
   background-color: $secondarycolor;
 }
+
+.title {
+  color: $secondarycolor;
+  margin-bottom: 0.5rem;
+  display: block;
+
+  @include fontSize(12);
+}

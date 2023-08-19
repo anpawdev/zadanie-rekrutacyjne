@@ -22,9 +22,15 @@
                       <?php
                       $size = 'full';
                       if ($image) {
-                        echo wp_get_attachment_image($image, $size, "", ["class" => "img-fluid"]);
+                        echo wp_get_attachment_image($image, $size, "", ["class" => "hero__image"]);
                       }; ?>
                     </div>
+                    <a class="carousel-control carousel-control-prev bg-white opacity-100" href="#carousel" role="button" data-slide="prev">
+                      <span class="carousel-control-icon carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control carousel-control-next bg-white" href="#carousel" role="button" data-slide="next">
+                      <span class="carousel-control-icon carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                   </div>
 
                   <div class="hero__text col-md-6">
@@ -41,7 +47,7 @@
                             $link_title = $link['title'];
                             $link_target = $link['target'] ? $link['target'] : '_self';
                           ?>
-                            <a class="btn d-inline-block <?php if (get_row_index() === 1) : ?> btn-primary text-white mr-4 <?php else : ?> btn-outline btn-border <?php endif; ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                            <a class="btn d-inline-block  mb-lg-0 mb-3  <?php if (get_row_index() === 1) : ?> btn-primary text-white mr-4<?php else : ?> btn-outline btn-border <?php endif; ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
                           <?php endif; ?>
                         <?php endwhile; ?>
                       <?php endif; ?>
@@ -53,13 +59,6 @@
             </div>
 
           <?php endif; ?>
-          <!-- buttons -->
-          <a class="carousel-control carousel-control-prev bg-white opacity-100" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-icon carousel-control-prev-icon" aria-hidden="true"></span>
-          </a>
-          <a class="carousel-control carousel-control-next bg-white" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-icon carousel-control-next-icon" aria-hidden="true"></span>
-          </a>
         </div>
 
       </div>

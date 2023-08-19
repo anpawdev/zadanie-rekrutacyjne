@@ -8866,6 +8866,12 @@ a {
 .bg-green {
   background-color: #1b5b31; }
 
+.title {
+  color: #1b5b31;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.75rem; }
+
 h1,
 h2,
 h4 {
@@ -8881,11 +8887,15 @@ h1 {
       line-height: 2.5rem; } }
 
 h2 {
+  letter-spacing: -1px;
+  margin-bottom: 1.25rem;
   font-size: 3rem; }
   @media (max-width: 991.98px) {
     h2 {
       font-size: 1.875rem;
       line-height: 2.375rem; } }
+  h2 em {
+    letter-spacing: 0; }
 
 h3 {
   font-family: "Montserrat", sans-serif;
@@ -8948,22 +8958,37 @@ nav .sub-menu {
     .footer__cta {
       width: 100%; } }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .hero .carousel, .hero {
     min-height: 737px; } }
 
-.hero__text {
-  padding-top: 9rem;
-  padding-right: 5rem;
-  padding-bottom: 9rem; }
-  .hero__text p {
-    margin: 2.9rem 3rem 4.4rem 0;
-    letter-spacing: 0; }
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero .carousel, .hero {
+    min-height: 462px; } }
 
-.hero img {
+.hero__text {
+  padding: 3rem 1rem 3rem 0; }
+  @media (min-width: 1200px) {
+    .hero__text {
+      padding: 9rem 5rem 9rem 2rem; } }
+  .hero__text p {
+    letter-spacing: 0;
+    margin: 1.5rem 0; }
+    @media (min-width: 992px) {
+      .hero__text p {
+        margin: 2.9rem 3rem 4.4rem 0; } }
+
+.hero__image {
   max-height: 737px;
   -o-object-fit: cover;
-  object-fit: cover; }
+  object-fit: cover;
+  max-width: 100%; }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .hero__image {
+      max-height: 462px; } }
+  @media (max-width: 767.98px) {
+    .hero__image {
+      height: auto; } }
 
 .btn {
   border-radius: 12.5rem;
@@ -8976,6 +9001,10 @@ nav .sub-menu {
   .btn-primary {
     background-color: #1b5b31;
     padding: 0.75rem 1.5rem 0.875rem; }
+    .btn-primary:hover {
+      color: #1b5b31;
+      background-color: transparent;
+      border: 1px solid #1b5b31; }
   .btn-outline {
     border: 1px solid #1b5b31;
     color: #1b5b31; }
@@ -9013,7 +9042,7 @@ nav .sub-menu {
     right: 50%; }
   .box-fluid .right-box {
     right: 0;
-    left: 50%; } }
+    left: 51.5%; } }
 
 .carousel-inner {
   overflow: visible !important; }

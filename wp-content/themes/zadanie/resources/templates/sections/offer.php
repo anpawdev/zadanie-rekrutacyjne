@@ -4,11 +4,11 @@
  * @package 
  */
 ?>
-<section class="offer">
+<section class="offer pt-lg-10 pt-5">
   <div class="container">
     <div class="row d-md-flex d-block">
       <div class="offset-md-1 col-md-7">
-        <span><?php the_sub_field('section_title'); ?></span>
+        <span class="title"><?php the_sub_field('section_title'); ?></span>
         <?php the_sub_field('section_heading'); ?>
         <p><?php the_sub_field('section_description'); ?></p>
       </div>
