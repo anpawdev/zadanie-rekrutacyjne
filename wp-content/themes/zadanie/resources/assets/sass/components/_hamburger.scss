@@ -1,0 +1,24 @@
+.header__hamburger {
+  cursor: pointer;
+  z-index: 100;
+  width: 30px;
+  height: 27px;
+  top: 0;
+  right: 0;
+
+  .line-menu {
+    height: 3px;
+    width: 27px;
+    transition: 0.4s;
+
+    &:first-of-type {
+      left: 5px;
+      width: 19px;
+    }
+
+    &:last-of-type {
+      width: 20px;
+      right: 0;
+    }
+  }
+}

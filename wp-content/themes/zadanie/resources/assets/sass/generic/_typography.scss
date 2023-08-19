@@ -70,7 +70,9 @@ span {
   }
 }
 
-a {
+a,
+::placeholder,
+input {
   @include fontSize(14);
   @include lineHeight(20);
 

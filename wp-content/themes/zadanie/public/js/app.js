@@ -11333,4 +11333,12 @@ menuLink.addEventListener('click', function (e) {
   submenu.classList.toggle('open');
 });
 
+var btnSearch = document.querySelector('.btn-search');
+var searchForm = document.querySelector('#searchform');
+
+btnSearch.addEventListener('click', function () {
+  btnSearch.classList.add('d-none');
+  searchForm.classList.remove('d-none');
+});
+
 }());
