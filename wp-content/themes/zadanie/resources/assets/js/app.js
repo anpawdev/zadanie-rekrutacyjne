@@ -1,5 +1,7 @@
 //
 import 'bootstrap/js/dist/carousel'
+import 'bootstrap/js/dist/modal'
+import $ from 'jquery'
 import Macy from 'macy'
 
 // dropdown
@@ -39,16 +41,18 @@ menuLinks.forEach(link => {
 })
 
 // gallery
-var macyInstance = Macy({
-  container: '.gallery__wrapper',
-  columns: 3,
-  margin: 43,
-  trueOrder: false,
-  breakAt: {
-    760: {
-      columns: 1
+document.addEventListener('DOMContentLoaded', function () {
+  const macyInstance = Macy({
+    container: '.gallery__wrapper',
+    columns: 3,
+    margin: 43,
+    trueOrder: false,
+    breakAt: {
+      760: {
+        columns: 1
+      }
     }
-  }
+  })
 })
 
 const btnLoadMore = document.querySelector('.btn-load-more')
@@ -58,4 +62,14 @@ btnLoadMore.addEventListener('click', () => {
   navigation.classList.toggle('open')
   gallery.classList.add('gallery__wrapper--more')
   btnLoadMore.classList.add('d-none')
+})
+
+// modal
+$('.open-modal').on('click', function (e) {
+  e.preventDefault()
+  const index = $(this).data('index')
+  const imageSrc = $('.gallery__item').eq(index).find('img').attr('src')
+
+  $('.modal-image').attr('src', imageSrc)
+  $('#modal').modal('show')
 })

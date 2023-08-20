@@ -22,7 +22,8 @@
     max-height: 100%;
 
     &::before {
-      background: transparent;
+      background: none;
+      z-index: 0;
     }
   }
 }

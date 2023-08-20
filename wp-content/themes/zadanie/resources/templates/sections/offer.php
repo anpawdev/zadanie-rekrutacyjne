@@ -4,7 +4,7 @@
  * @package 
  */
 ?>
-<section class="offer pt-lg-10 pb-12 pt-5" id="offer">
+<section class="offer pt-lg-10 pb-lg-12 pb-6 pt-5" id="offer">
   <div class="container">
     <div class="row d-md-flex d-block">
       <div class="offset-md-1 col-md-7">
