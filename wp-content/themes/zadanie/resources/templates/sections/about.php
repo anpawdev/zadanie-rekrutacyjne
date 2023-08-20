@@ -4,7 +4,7 @@
  * @package 
  */
 ?>
-<section class="about bg-green mb-11">
+<section class="about bg-green mb-11" id="about">
   <div class="container-fluid position-relative box-fluid">
     <div class="container">
       <div class="row d-md-flex d-block">

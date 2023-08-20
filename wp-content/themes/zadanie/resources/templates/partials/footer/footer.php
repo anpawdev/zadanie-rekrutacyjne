@@ -4,7 +4,7 @@
  * 
  */
 ?>
-<footer class="footer text-white pt-7 pb-6">
+<footer class="footer text-white pt-7 pb-6" id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 mx-auto">

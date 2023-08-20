@@ -7861,6 +7861,9 @@ a {
   a svg {
     margin: 0 0 3px 4px; }
 
+html {
+  scroll-behavior: smooth; }
+
 #app {
   overflow: hidden; }
 
