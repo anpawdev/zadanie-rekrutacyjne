@@ -12235,7 +12235,6 @@ var macy$1 = createCommonjsModule(function (module, exports) {
   });
 });
 
-//
 // dropdown
 var menuLink = document.querySelector('.menu-item-has-children');
 var submenu = document.querySelector('.sub-menu');
@@ -12246,12 +12245,16 @@ menuLink.addEventListener('click', function (e) {
 });
 
 // search
-var btnSearch = document.querySelector('.btn-search');
-var searchForm = document.querySelector('#searchform');
+var btnSearch = document.querySelectorAll('.btn-search');
+var searchForm = document.querySelectorAll('#searchform');
 
-btnSearch.addEventListener('click', function () {
-  btnSearch.classList.add('d-none');
-  searchForm.classList.remove('d-none');
+btnSearch.forEach(function (element) {
+  element.addEventListener('click', function () {
+    element.classList.add('d-none');
+    searchForm.forEach(function (searchForm) {
+      searchForm.classList.remove('d-none');
+    });
+  });
 });
 
 // mobile menu

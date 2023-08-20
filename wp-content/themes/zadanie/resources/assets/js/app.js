@@ -1,4 +1,3 @@
-//
 import 'bootstrap/js/dist/carousel'
 import 'bootstrap/js/dist/modal'
 import $ from 'jquery'
@@ -14,12 +13,16 @@ menuLink.addEventListener('click', (e) => {
 })
 
 // search
-const btnSearch = document.querySelector('.btn-search')
-const searchForm = document.querySelector('#searchform')
+const btnSearch = document.querySelectorAll('.btn-search')
+const searchForm = document.querySelectorAll('#searchform')
 
-btnSearch.addEventListener('click', () => {
-  btnSearch.classList.add('d-none')
-  searchForm.classList.remove('d-none')
+btnSearch.forEach(element => {
+  element.addEventListener('click', () => {
+    element.classList.add('d-none')
+    searchForm.forEach(searchForm => {
+      searchForm.classList.remove('d-none')
+    })
+  })
 })
 
 // mobile menu

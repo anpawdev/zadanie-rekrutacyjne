@@ -24,9 +24,10 @@
 
     &:hover {
       transform: scale(1.1);
+      text-decoration: none;
     }
 
-    a {
+    &-read-more {
       color: $secondarycolor;
 
       @include fontSize(16);
@@ -50,7 +51,7 @@
     }
 
     p {
-      margin-bottom: 67px;
+      margin: 0.75rem 0 4.1875rem;
 
       @include fontSize(14);
       @include lineHeight(20);
@@ -58,7 +59,7 @@
   }
 
   figure {
-    margin-bottom: 2rem;
+    margin-bottom: 2.7rem;
     height: 40px;
   }
 }

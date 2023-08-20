@@ -8582,16 +8582,17 @@ input {
   .offer__box:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
-    transform: scale(1.1); }
-  .offer__box a {
+    transform: scale(1.1);
+    text-decoration: none; }
+  .offer__box-read-more {
     color: #1b5b31;
     font-size: 1rem; }
-    .offer__box a:hover {
+    .offer__box-read-more:hover {
       text-decoration: none; }
-      .offer__box a:hover img {
+      .offer__box-read-more:hover img {
         -webkit-animation: move 1s ease-in-out infinite;
         animation: move 1s ease-in-out infinite; }
-    .offer__box a::before {
+    .offer__box-read-more::before {
       content: "";
       position: absolute;
       width: 98%;
@@ -8599,12 +8600,12 @@ input {
       height: 1px;
       bottom: -6px; }
   .offer__box p {
-    margin-bottom: 67px;
+    margin: 0.75rem 0 4.1875rem;
     font-size: 0.875rem;
     line-height: 1.25rem; }
 
 .offer figure {
-  margin-bottom: 2rem;
+  margin-bottom: 2.7rem;
   height: 40px; }
 
 .about {
