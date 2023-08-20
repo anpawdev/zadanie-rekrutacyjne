@@ -11627,4 +11627,13 @@ var macyInstance = macy$1({
   }
 });
 
+var btnLoadMore = document.querySelector('.btn-load-more');
+var gallery = document.querySelector('.gallery__wrapper');
+
+btnLoadMore.addEventListener('click', function () {
+  navigation.classList.toggle('open');
+  gallery.classList.add('gallery__wrapper--more');
+  btnLoadMore.classList.add('d-none');
+});
+
 }());

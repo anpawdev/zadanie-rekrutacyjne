@@ -62,4 +62,18 @@
       @include colors-hover;
     }
   }
+
+  &-load-more {
+    border: 1px solid $dark;
+    padding: 0.75rem 1.438rem;
+    left: 0;
+    right: 0;
+    bottom: 89px;
+    z-index: 12;
+
+    svg {
+      margin: -5px 0 3px 4px;
+      animation: moveDown 1s ease-in-out infinite;
+    }
+  }
 }

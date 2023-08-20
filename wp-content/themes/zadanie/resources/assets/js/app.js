@@ -50,3 +50,12 @@ var macyInstance = Macy({
     }
   }
 })
+
+const btnLoadMore = document.querySelector('.btn-load-more')
+const gallery = document.querySelector('.gallery__wrapper')
+
+btnLoadMore.addEventListener('click', () => {
+  navigation.classList.toggle('open')
+  gallery.classList.add('gallery__wrapper--more')
+  btnLoadMore.classList.add('d-none')
+})
