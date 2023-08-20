@@ -8,9 +8,13 @@
 @import "../node_modules/bootstrap/scss/mixins/deprecate";
 @import "../node_modules/bootstrap/scss/mixins/text-truncate";
 @import "../node_modules/bootstrap/scss/mixins/reset-text";
+@import "../node_modules/bootstrap/scss/mixins/grid";
 @import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/modal";
 @import "../node_modules/bootstrap/scss/utilities/background";
 @import "../node_modules/bootstrap/scss/utilities/text";
+@import "../node_modules/bootstrap/scss/utilities/borders";
+@import "../node_modules/bootstrap/scss/utilities/overflow";
 
 // Fonts
 // =================================================
@@ -32,7 +36,14 @@
 @import "components/hero";
 @import "components/buttons";
 @import "components/box";
+@import "components/slider";
+@import "components/animation";
+@import "components/search";
+@import "components/hamburger";
+@import "components/modal";
 
 // Sections
 // =================================================
-@import "sections/intro.scss";
+@import "sections/offer.scss";
+@import "sections/about";
+@import "sections/gallery";

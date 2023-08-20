@@ -10,7 +10,10 @@
 <nav>
 	<?php
 	wp_nav_menu(array(
-		'theme_location' => 'primary', 'container' => 'ul', 'menu_class' => 'nolist d-none d-md-flex'
+		'theme_location' => 'primary', 'container' => 'ul', 'menu_class' => 'nolist d-none d-md-flex mb-0'
 	));
 	?>
+	<div class="d-md-none mt-2rem">
+		<?php get_template_part('searchform'); ?>
+	</div>
 </nav>

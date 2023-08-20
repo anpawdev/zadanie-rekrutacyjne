@@ -1,0 +1,25 @@
+.arrow-animate {
+  margin-left: 10px;
+}
+
+@keyframes move {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 0);
+  }
+}
+
+@keyframes moveDown {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, 5px);
+  }
+}

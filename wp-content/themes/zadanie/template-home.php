@@ -11,6 +11,12 @@
 		        	get_template_part('resources/templates/sections/intro');
 						elseif (get_row_layout() == 'offer_page_home') :
 							get_template_part('resources/templates/sections/offer');
+						elseif (get_row_layout() == 'about_page_home') :
+							get_template_part('resources/templates/sections/about');
+						elseif (get_row_layout() == 'gallery_page_home') :
+							get_template_part('resources/templates/sections/gallery');
+						elseif (get_row_layout() == 'baner_page_home') :
+							get_template_part('resources/templates/sections/baner');
 		      	endif;
 		    endwhile;
 		endwhile;

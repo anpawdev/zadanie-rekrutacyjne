@@ -11324,6 +11324,989 @@ var carousel = createCommonjsModule(function (module, exports) {
   
 });
 
-//
+var modal = createCommonjsModule(function (module, exports) {
+  /*!
+    * Bootstrap modal.js v4.5.3 (https://getbootstrap.com/)
+    * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+    */
+  (function (global, factory) {
+    module.exports = factory(jquery, util);
+  })(commonjsGlobal, function ($, Util) {
+    'use strict';
+
+    function _interopDefaultLegacy(e) {
+      return e && (typeof e === 'undefined' ? 'undefined' : _typeof(e)) === 'object' && 'default' in e ? e : { 'default': e };
+    }
+
+    var $__default = /*#__PURE__*/_interopDefaultLegacy($);
+    var Util__default = /*#__PURE__*/_interopDefaultLegacy(Util);
+
+    function _extends$$1() {
+      _extends$$1 = Object.assign || function (target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }return target;
+      };return _extends$$1.apply(this, arguments);
+    }
+
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    function _createClass(Constructor, protoProps, staticProps) {
+      if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;
+    }
+    /**
+     * ------------------------------------------------------------------------
+     * Constants
+     * ------------------------------------------------------------------------
+     */
+
+    var NAME = 'modal';
+    var VERSION = '4.5.3';
+    var DATA_KEY = 'bs.modal';
+    var EVENT_KEY = "." + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
+    var JQUERY_NO_CONFLICT = $__default['default'].fn[NAME];
+    var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
+
+    var Default = {
+      backdrop: true,
+      keyboard: true,
+      focus: true,
+      show: true
+    };
+    var DefaultType = {
+      backdrop: '(boolean|string)',
+      keyboard: 'boolean',
+      focus: 'boolean',
+      show: 'boolean'
+    };
+    var EVENT_HIDE = "hide" + EVENT_KEY;
+    var EVENT_HIDE_PREVENTED = "hidePrevented" + EVENT_KEY;
+    var EVENT_HIDDEN = "hidden" + EVENT_KEY;
+    var EVENT_SHOW = "show" + EVENT_KEY;
+    var EVENT_SHOWN = "shown" + EVENT_KEY;
+    var EVENT_FOCUSIN = "focusin" + EVENT_KEY;
+    var EVENT_RESIZE = "resize" + EVENT_KEY;
+    var EVENT_CLICK_DISMISS = "click.dismiss" + EVENT_KEY;
+    var EVENT_KEYDOWN_DISMISS = "keydown.dismiss" + EVENT_KEY;
+    var EVENT_MOUSEUP_DISMISS = "mouseup.dismiss" + EVENT_KEY;
+    var EVENT_MOUSEDOWN_DISMISS = "mousedown.dismiss" + EVENT_KEY;
+    var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
+    var CLASS_NAME_SCROLLABLE = 'modal-dialog-scrollable';
+    var CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure';
+    var CLASS_NAME_BACKDROP = 'modal-backdrop';
+    var CLASS_NAME_OPEN = 'modal-open';
+    var CLASS_NAME_FADE = 'fade';
+    var CLASS_NAME_SHOW = 'show';
+    var CLASS_NAME_STATIC = 'modal-static';
+    var SELECTOR_DIALOG = '.modal-dialog';
+    var SELECTOR_MODAL_BODY = '.modal-body';
+    var SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]';
+    var SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]';
+    var SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+    var SELECTOR_STICKY_CONTENT = '.sticky-top';
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
+    var Modal = /*#__PURE__*/function () {
+      function Modal(element, config) {
+        this._config = this._getConfig(config);
+        this._element = element;
+        this._dialog = element.querySelector(SELECTOR_DIALOG);
+        this._backdrop = null;
+        this._isShown = false;
+        this._isBodyOverflowing = false;
+        this._ignoreBackdropClick = false;
+        this._isTransitioning = false;
+        this._scrollbarWidth = 0;
+      } // Getters
+
+
+      var _proto = Modal.prototype;
+
+      // Public
+      _proto.toggle = function toggle(relatedTarget) {
+        return this._isShown ? this.hide() : this.show(relatedTarget);
+      };
+
+      _proto.show = function show(relatedTarget) {
+        var _this = this;
+
+        if (this._isShown || this._isTransitioning) {
+          return;
+        }
+
+        if ($__default['default'](this._element).hasClass(CLASS_NAME_FADE)) {
+          this._isTransitioning = true;
+        }
+
+        var showEvent = $__default['default'].Event(EVENT_SHOW, {
+          relatedTarget: relatedTarget
+        });
+        $__default['default'](this._element).trigger(showEvent);
+
+        if (this._isShown || showEvent.isDefaultPrevented()) {
+          return;
+        }
+
+        this._isShown = true;
+
+        this._checkScrollbar();
+
+        this._setScrollbar();
+
+        this._adjustDialog();
+
+        this._setEscapeEvent();
+
+        this._setResizeEvent();
+
+        $__default['default'](this._element).on(EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, function (event) {
+          return _this.hide(event);
+        });
+        $__default['default'](this._dialog).on(EVENT_MOUSEDOWN_DISMISS, function () {
+          $__default['default'](_this._element).one(EVENT_MOUSEUP_DISMISS, function (event) {
+            if ($__default['default'](event.target).is(_this._element)) {
+              _this._ignoreBackdropClick = true;
+            }
+          });
+        });
+
+        this._showBackdrop(function () {
+          return _this._showElement(relatedTarget);
+        });
+      };
+
+      _proto.hide = function hide(event) {
+        var _this2 = this;
+
+        if (event) {
+          event.preventDefault();
+        }
+
+        if (!this._isShown || this._isTransitioning) {
+          return;
+        }
+
+        var hideEvent = $__default['default'].Event(EVENT_HIDE);
+        $__default['default'](this._element).trigger(hideEvent);
+
+        if (!this._isShown || hideEvent.isDefaultPrevented()) {
+          return;
+        }
+
+        this._isShown = false;
+        var transition = $__default['default'](this._element).hasClass(CLASS_NAME_FADE);
+
+        if (transition) {
+          this._isTransitioning = true;
+        }
+
+        this._setEscapeEvent();
+
+        this._setResizeEvent();
+
+        $__default['default'](document).off(EVENT_FOCUSIN);
+        $__default['default'](this._element).removeClass(CLASS_NAME_SHOW);
+        $__default['default'](this._element).off(EVENT_CLICK_DISMISS);
+        $__default['default'](this._dialog).off(EVENT_MOUSEDOWN_DISMISS);
+
+        if (transition) {
+          var transitionDuration = Util__default['default'].getTransitionDurationFromElement(this._element);
+          $__default['default'](this._element).one(Util__default['default'].TRANSITION_END, function (event) {
+            return _this2._hideModal(event);
+          }).emulateTransitionEnd(transitionDuration);
+        } else {
+          this._hideModal();
+        }
+      };
+
+      _proto.dispose = function dispose() {
+        [window, this._element, this._dialog].forEach(function (htmlElement) {
+          return $__default['default'](htmlElement).off(EVENT_KEY);
+        });
+        /**
+         * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
+         * Do not move `document` in `htmlElements` array
+         * It will remove `EVENT_CLICK_DATA_API` event that should remain
+         */
+
+        $__default['default'](document).off(EVENT_FOCUSIN);
+        $__default['default'].removeData(this._element, DATA_KEY);
+        this._config = null;
+        this._element = null;
+        this._dialog = null;
+        this._backdrop = null;
+        this._isShown = null;
+        this._isBodyOverflowing = null;
+        this._ignoreBackdropClick = null;
+        this._isTransitioning = null;
+        this._scrollbarWidth = null;
+      };
+
+      _proto.handleUpdate = function handleUpdate() {
+        this._adjustDialog();
+      } // Private
+      ;
+
+      _proto._getConfig = function _getConfig(config) {
+        config = _extends$$1({}, Default, config);
+        Util__default['default'].typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      };
+
+      _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
+        var _this3 = this;
+
+        if (this._config.backdrop === 'static') {
+          var hideEventPrevented = $__default['default'].Event(EVENT_HIDE_PREVENTED);
+          $__default['default'](this._element).trigger(hideEventPrevented);
+
+          if (hideEventPrevented.isDefaultPrevented()) {
+            return;
+          }
+
+          var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+          if (!isModalOverflowing) {
+            this._element.style.overflowY = 'hidden';
+          }
+
+          this._element.classList.add(CLASS_NAME_STATIC);
+
+          var modalTransitionDuration = Util__default['default'].getTransitionDurationFromElement(this._dialog);
+          $__default['default'](this._element).off(Util__default['default'].TRANSITION_END);
+          $__default['default'](this._element).one(Util__default['default'].TRANSITION_END, function () {
+            _this3._element.classList.remove(CLASS_NAME_STATIC);
+
+            if (!isModalOverflowing) {
+              $__default['default'](_this3._element).one(Util__default['default'].TRANSITION_END, function () {
+                _this3._element.style.overflowY = '';
+              }).emulateTransitionEnd(_this3._element, modalTransitionDuration);
+            }
+          }).emulateTransitionEnd(modalTransitionDuration);
+
+          this._element.focus();
+        } else {
+          this.hide();
+        }
+      };
+
+      _proto._showElement = function _showElement(relatedTarget) {
+        var _this4 = this;
+
+        var transition = $__default['default'](this._element).hasClass(CLASS_NAME_FADE);
+        var modalBody = this._dialog ? this._dialog.querySelector(SELECTOR_MODAL_BODY) : null;
+
+        if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+          // Don't move modal's DOM position
+          document.body.appendChild(this._element);
+        }
+
+        this._element.style.display = 'block';
+
+        this._element.removeAttribute('aria-hidden');
+
+        this._element.setAttribute('aria-modal', true);
+
+        this._element.setAttribute('role', 'dialog');
+
+        if ($__default['default'](this._dialog).hasClass(CLASS_NAME_SCROLLABLE) && modalBody) {
+          modalBody.scrollTop = 0;
+        } else {
+          this._element.scrollTop = 0;
+        }
+
+        if (transition) {
+          Util__default['default'].reflow(this._element);
+        }
+
+        $__default['default'](this._element).addClass(CLASS_NAME_SHOW);
+
+        if (this._config.focus) {
+          this._enforceFocus();
+        }
+
+        var shownEvent = $__default['default'].Event(EVENT_SHOWN, {
+          relatedTarget: relatedTarget
+        });
+
+        var transitionComplete = function transitionComplete() {
+          if (_this4._config.focus) {
+            _this4._element.focus();
+          }
+
+          _this4._isTransitioning = false;
+          $__default['default'](_this4._element).trigger(shownEvent);
+        };
+
+        if (transition) {
+          var transitionDuration = Util__default['default'].getTransitionDurationFromElement(this._dialog);
+          $__default['default'](this._dialog).one(Util__default['default'].TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
+        } else {
+          transitionComplete();
+        }
+      };
+
+      _proto._enforceFocus = function _enforceFocus() {
+        var _this5 = this;
+
+        $__default['default'](document).off(EVENT_FOCUSIN) // Guard against infinite focus loop
+        .on(EVENT_FOCUSIN, function (event) {
+          if (document !== event.target && _this5._element !== event.target && $__default['default'](_this5._element).has(event.target).length === 0) {
+            _this5._element.focus();
+          }
+        });
+      };
+
+      _proto._setEscapeEvent = function _setEscapeEvent() {
+        var _this6 = this;
+
+        if (this._isShown) {
+          $__default['default'](this._element).on(EVENT_KEYDOWN_DISMISS, function (event) {
+            if (_this6._config.keyboard && event.which === ESCAPE_KEYCODE) {
+              event.preventDefault();
+
+              _this6.hide();
+            } else if (!_this6._config.keyboard && event.which === ESCAPE_KEYCODE) {
+              _this6._triggerBackdropTransition();
+            }
+          });
+        } else if (!this._isShown) {
+          $__default['default'](this._element).off(EVENT_KEYDOWN_DISMISS);
+        }
+      };
+
+      _proto._setResizeEvent = function _setResizeEvent() {
+        var _this7 = this;
+
+        if (this._isShown) {
+          $__default['default'](window).on(EVENT_RESIZE, function (event) {
+            return _this7.handleUpdate(event);
+          });
+        } else {
+          $__default['default'](window).off(EVENT_RESIZE);
+        }
+      };
+
+      _proto._hideModal = function _hideModal() {
+        var _this8 = this;
+
+        this._element.style.display = 'none';
+
+        this._element.setAttribute('aria-hidden', true);
+
+        this._element.removeAttribute('aria-modal');
+
+        this._element.removeAttribute('role');
+
+        this._isTransitioning = false;
+
+        this._showBackdrop(function () {
+          $__default['default'](document.body).removeClass(CLASS_NAME_OPEN);
+
+          _this8._resetAdjustments();
+
+          _this8._resetScrollbar();
+
+          $__default['default'](_this8._element).trigger(EVENT_HIDDEN);
+        });
+      };
+
+      _proto._removeBackdrop = function _removeBackdrop() {
+        if (this._backdrop) {
+          $__default['default'](this._backdrop).remove();
+          this._backdrop = null;
+        }
+      };
+
+      _proto._showBackdrop = function _showBackdrop(callback) {
+        var _this9 = this;
+
+        var animate = $__default['default'](this._element).hasClass(CLASS_NAME_FADE) ? CLASS_NAME_FADE : '';
+
+        if (this._isShown && this._config.backdrop) {
+          this._backdrop = document.createElement('div');
+          this._backdrop.className = CLASS_NAME_BACKDROP;
+
+          if (animate) {
+            this._backdrop.classList.add(animate);
+          }
+
+          $__default['default'](this._backdrop).appendTo(document.body);
+          $__default['default'](this._element).on(EVENT_CLICK_DISMISS, function (event) {
+            if (_this9._ignoreBackdropClick) {
+              _this9._ignoreBackdropClick = false;
+              return;
+            }
+
+            if (event.target !== event.currentTarget) {
+              return;
+            }
+
+            _this9._triggerBackdropTransition();
+          });
+
+          if (animate) {
+            Util__default['default'].reflow(this._backdrop);
+          }
+
+          $__default['default'](this._backdrop).addClass(CLASS_NAME_SHOW);
+
+          if (!callback) {
+            return;
+          }
+
+          if (!animate) {
+            callback();
+            return;
+          }
+
+          var backdropTransitionDuration = Util__default['default'].getTransitionDurationFromElement(this._backdrop);
+          $__default['default'](this._backdrop).one(Util__default['default'].TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
+        } else if (!this._isShown && this._backdrop) {
+          $__default['default'](this._backdrop).removeClass(CLASS_NAME_SHOW);
+
+          var callbackRemove = function callbackRemove() {
+            _this9._removeBackdrop();
+
+            if (callback) {
+              callback();
+            }
+          };
+
+          if ($__default['default'](this._element).hasClass(CLASS_NAME_FADE)) {
+            var _backdropTransitionDuration = Util__default['default'].getTransitionDurationFromElement(this._backdrop);
+
+            $__default['default'](this._backdrop).one(Util__default['default'].TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
+          } else {
+            callbackRemove();
+          }
+        } else if (callback) {
+          callback();
+        }
+      } // ----------------------------------------------------------------------
+      // the following methods are used to handle overflowing modals
+      // todo (fat): these should probably be refactored out of modal.js
+      // ----------------------------------------------------------------------
+      ;
+
+      _proto._adjustDialog = function _adjustDialog() {
+        var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+        if (!this._isBodyOverflowing && isModalOverflowing) {
+          this._element.style.paddingLeft = this._scrollbarWidth + "px";
+        }
+
+        if (this._isBodyOverflowing && !isModalOverflowing) {
+          this._element.style.paddingRight = this._scrollbarWidth + "px";
+        }
+      };
+
+      _proto._resetAdjustments = function _resetAdjustments() {
+        this._element.style.paddingLeft = '';
+        this._element.style.paddingRight = '';
+      };
+
+      _proto._checkScrollbar = function _checkScrollbar() {
+        var rect = document.body.getBoundingClientRect();
+        this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
+        this._scrollbarWidth = this._getScrollbarWidth();
+      };
+
+      _proto._setScrollbar = function _setScrollbar() {
+        var _this10 = this;
+
+        if (this._isBodyOverflowing) {
+          // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+          //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+          var fixedContent = [].slice.call(document.querySelectorAll(SELECTOR_FIXED_CONTENT));
+          var stickyContent = [].slice.call(document.querySelectorAll(SELECTOR_STICKY_CONTENT)); // Adjust fixed content padding
+
+          $__default['default'](fixedContent).each(function (index, element) {
+            var actualPadding = element.style.paddingRight;
+            var calculatedPadding = $__default['default'](element).css('padding-right');
+            $__default['default'](element).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px");
+          }); // Adjust sticky content margin
+
+          $__default['default'](stickyContent).each(function (index, element) {
+            var actualMargin = element.style.marginRight;
+            var calculatedMargin = $__default['default'](element).css('margin-right');
+            $__default['default'](element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px");
+          }); // Adjust body padding
+
+          var actualPadding = document.body.style.paddingRight;
+          var calculatedPadding = $__default['default'](document.body).css('padding-right');
+          $__default['default'](document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
+        }
+
+        $__default['default'](document.body).addClass(CLASS_NAME_OPEN);
+      };
+
+      _proto._resetScrollbar = function _resetScrollbar() {
+        // Restore fixed content padding
+        var fixedContent = [].slice.call(document.querySelectorAll(SELECTOR_FIXED_CONTENT));
+        $__default['default'](fixedContent).each(function (index, element) {
+          var padding = $__default['default'](element).data('padding-right');
+          $__default['default'](element).removeData('padding-right');
+          element.style.paddingRight = padding ? padding : '';
+        }); // Restore sticky content
+
+        var elements = [].slice.call(document.querySelectorAll("" + SELECTOR_STICKY_CONTENT));
+        $__default['default'](elements).each(function (index, element) {
+          var margin = $__default['default'](element).data('margin-right');
+
+          if (typeof margin !== 'undefined') {
+            $__default['default'](element).css('margin-right', margin).removeData('margin-right');
+          }
+        }); // Restore body padding
+
+        var padding = $__default['default'](document.body).data('padding-right');
+        $__default['default'](document.body).removeData('padding-right');
+        document.body.style.paddingRight = padding ? padding : '';
+      };
+
+      _proto._getScrollbarWidth = function _getScrollbarWidth() {
+        // thx d.walsh
+        var scrollDiv = document.createElement('div');
+        scrollDiv.className = CLASS_NAME_SCROLLBAR_MEASURER;
+        document.body.appendChild(scrollDiv);
+        var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+        document.body.removeChild(scrollDiv);
+        return scrollbarWidth;
+      } // Static
+      ;
+
+      Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
+        return this.each(function () {
+          var data = $__default['default'](this).data(DATA_KEY);
+
+          var _config = _extends$$1({}, Default, $__default['default'](this).data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config ? config : {});
+
+          if (!data) {
+            data = new Modal(this, _config);
+            $__default['default'](this).data(DATA_KEY, data);
+          }
+
+          if (typeof config === 'string') {
+            if (typeof data[config] === 'undefined') {
+              throw new TypeError("No method named \"" + config + "\"");
+            }
+
+            data[config](relatedTarget);
+          } else if (_config.show) {
+            data.show(relatedTarget);
+          }
+        });
+      };
+
+      _createClass(Modal, null, [{
+        key: "VERSION",
+        get: function get$$1() {
+          return VERSION;
+        }
+      }, {
+        key: "Default",
+        get: function get$$1() {
+          return Default;
+        }
+      }]);
+
+      return Modal;
+    }();
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $__default['default'](document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+      var _this11 = this;
+
+      var target;
+      var selector = Util__default['default'].getSelectorFromElement(this);
+
+      if (selector) {
+        target = document.querySelector(selector);
+      }
+
+      var config = $__default['default'](target).data(DATA_KEY) ? 'toggle' : _extends$$1({}, $__default['default'](target).data(), $__default['default'](this).data());
+
+      if (this.tagName === 'A' || this.tagName === 'AREA') {
+        event.preventDefault();
+      }
+
+      var $target = $__default['default'](target).one(EVENT_SHOW, function (showEvent) {
+        if (showEvent.isDefaultPrevented()) {
+          // Only register focus restorer if modal will actually get shown
+          return;
+        }
+
+        $target.one(EVENT_HIDDEN, function () {
+          if ($__default['default'](_this11).is(':visible')) {
+            _this11.focus();
+          }
+        });
+      });
+
+      Modal._jQueryInterface.call($__default['default'](target), config, this);
+    });
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $__default['default'].fn[NAME] = Modal._jQueryInterface;
+    $__default['default'].fn[NAME].Constructor = Modal;
+
+    $__default['default'].fn[NAME].noConflict = function () {
+      $__default['default'].fn[NAME] = JQUERY_NO_CONFLICT;
+      return Modal._jQueryInterface;
+    };
+
+    return Modal;
+  });
+  
+});
+
+var macy$1 = createCommonjsModule(function (module, exports) {
+  !function (t, n) {
+    module.exports = n();
+  }(commonjsGlobal, function () {
+    "use strict";
+    function t(t, n) {
+      var e = void 0;return function () {
+        e && clearTimeout(e), e = setTimeout(t, n);
+      };
+    }function n(t, n) {
+      for (var e = t.length, r = e, o = []; e--;) {
+        o.push(n(t[r - e - 1]));
+      }return o;
+    }function e(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];if (window.Promise) return A(t, n, e);t.recalculate(!0, !0);
+    }function r(t) {
+      for (var n = t.options, e = t.responsiveOptions, r = t.keys, o = t.docWidth, i = void 0, s = 0; s < r.length; s++) {
+        var a = parseInt(r[s], 10);o >= a && (i = n.breakAt[a], O(i, e));
+      }return e;
+    }function o(t) {
+      for (var n = t.options, e = t.responsiveOptions, r = t.keys, o = t.docWidth, i = void 0, s = r.length - 1; s >= 0; s--) {
+        var a = parseInt(r[s], 10);o <= a && (i = n.breakAt[a], O(i, e));
+      }return e;
+    }function i(t) {
+      var n = t.useContainerForBreakpoints ? t.container.clientWidth : window.innerWidth,
+          e = { columns: t.columns };b(t.margin) ? e.margin = { x: t.margin.x, y: t.margin.y } : e.margin = { x: t.margin, y: t.margin };var i = Object.keys(t.breakAt);return t.mobileFirst ? r({ options: t, responsiveOptions: e, keys: i, docWidth: n }) : o({ options: t, responsiveOptions: e, keys: i, docWidth: n });
+    }function s(t) {
+      return i(t).columns;
+    }function a(t) {
+      return i(t).margin;
+    }function c(t) {
+      var n = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1],
+          e = s(t),
+          r = a(t).x,
+          o = 100 / e;if (!n) return o;if (1 === e) return "100%";var i = "px";if ("string" == typeof r) {
+        var c = parseFloat(r);i = r.replace(c, ""), r = c;
+      }return r = (e - 1) * r / e, "%" === i ? o - r + "%" : "calc(" + o + "% - " + r + i + ")";
+    }function u(t, n) {
+      var e = s(t.options),
+          r = 0,
+          o = void 0,
+          i = void 0;if (1 === ++n) return 0;i = a(t.options).x;var u = "px";if ("string" == typeof i) {
+        var l = parseFloat(i, 10);u = i.replace(l, ""), i = l;
+      }return o = (i - (e - 1) * i / e) * (n - 1), r += c(t.options, !1) * (n - 1), "%" === u ? r + o + "%" : "calc(" + r + "% + " + o + u + ")";
+    }function l(t) {
+      var n = 0,
+          e = t.container,
+          r = t.rows;v(r, function (t) {
+        n = t > n ? t : n;
+      }), e.style.height = n + "px";
+    }function p(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
+          r = !(arguments.length > 3 && void 0 !== arguments[3]) || arguments[3],
+          o = s(t.options),
+          i = a(t.options).y;M(t, o, e), v(n, function (n) {
+        var e = 0,
+            o = parseInt(n.offsetHeight, 10);isNaN(o) || (t.rows.forEach(function (n, r) {
+          n < t.rows[e] && (e = r);
+        }), n.style.position = "absolute", n.style.top = t.rows[e] + "px", n.style.left = "" + t.cols[e], t.rows[e] += isNaN(o) ? 0 : o + i, r && (n.dataset.macyComplete = 1));
+      }), r && (t.tmpRows = null), l(t);
+    }function f(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
+          r = !(arguments.length > 3 && void 0 !== arguments[3]) || arguments[3],
+          o = s(t.options),
+          i = a(t.options).y;M(t, o, e), v(n, function (n) {
+        t.lastcol === o && (t.lastcol = 0);var e = C(n, "height");e = parseInt(n.offsetHeight, 10), isNaN(e) || (n.style.position = "absolute", n.style.top = t.rows[t.lastcol] + "px", n.style.left = "" + t.cols[t.lastcol], t.rows[t.lastcol] += isNaN(e) ? 0 : e + i, t.lastcol += 1, r && (n.dataset.macyComplete = 1));
+      }), r && (t.tmpRows = null), l(t);
+    }var h = function t(n, e) {
+      if (!(this instanceof t)) return new t(n, e);if (n && n.nodeName) return n;if (n = n.replace(/^\s*/, "").replace(/\s*$/, ""), e) return this.byCss(n, e);for (var r in this.selectors) {
+        if (e = r.split("/"), new RegExp(e[1], e[2]).test(n)) return this.selectors[r](n);
+      }return this.byCss(n);
+    };h.prototype.byCss = function (t, n) {
+      return (n || document).querySelectorAll(t);
+    }, h.prototype.selectors = {}, h.prototype.selectors[/^\.[\w\-]+$/] = function (t) {
+      return document.getElementsByClassName(t.substring(1));
+    }, h.prototype.selectors[/^\w+$/] = function (t) {
+      return document.getElementsByTagName(t);
+    }, h.prototype.selectors[/^\#[\w\-]+$/] = function (t) {
+      return document.getElementById(t.substring(1));
+    };var v = function v(t, n) {
+      for (var e = t.length, r = e; e--;) {
+        n(t[r - e - 1]);
+      }
+    },
+        m = function m() {
+      var t = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];this.running = !1, this.events = [], this.add(t);
+    };m.prototype.run = function () {
+      if (!this.running && this.events.length > 0) {
+        var t = this.events.shift();this.running = !0, t(), this.running = !1, this.run();
+      }
+    }, m.prototype.add = function () {
+      var t = this,
+          n = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];return !!n && (Array.isArray(n) ? v(n, function (n) {
+        return t.add(n);
+      }) : (this.events.push(n), void this.run()));
+    }, m.prototype.clear = function () {
+      this.events = [];
+    };var d = function d(t) {
+      var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};return this.instance = t, this.data = n, this;
+    },
+        y = function y() {
+      var t = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];this.events = {}, this.instance = t;
+    };y.prototype.on = function () {
+      var t = arguments.length > 0 && void 0 !== arguments[0] && arguments[0],
+          n = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];return !(!t || !n) && (Array.isArray(this.events[t]) || (this.events[t] = []), this.events[t].push(n));
+    }, y.prototype.emit = function () {
+      var t = arguments.length > 0 && void 0 !== arguments[0] && arguments[0],
+          n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};if (!t || !Array.isArray(this.events[t])) return !1;var e = new d(this.instance, n);v(this.events[t], function (t) {
+        return t(e);
+      });
+    };var g = function g(t) {
+      return !("naturalHeight" in t && t.naturalHeight + t.naturalWidth === 0) || t.width + t.height !== 0;
+    },
+        E = function E(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];return new Promise(function (t, e) {
+        if (n.complete) return g(n) ? t(n) : e(n);n.addEventListener("load", function () {
+          return g(n) ? t(n) : e(n);
+        }), n.addEventListener("error", function () {
+          return e(n);
+        });
+      }).then(function (n) {
+        e && t.emit(t.constants.EVENT_IMAGE_LOAD, { img: n });
+      }).catch(function (n) {
+        return t.emit(t.constants.EVENT_IMAGE_ERROR, { img: n });
+      });
+    },
+        w = function w(t, e) {
+      var r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];return n(e, function (n) {
+        return E(t, n, r);
+      });
+    },
+        A = function A(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];return Promise.all(w(t, n, e)).then(function () {
+        t.emit(t.constants.EVENT_IMAGE_COMPLETE);
+      });
+    },
+        I = function I(n) {
+      return t(function () {
+        n.emit(n.constants.EVENT_RESIZE), n.queue.add(function () {
+          return n.recalculate(!0, !0);
+        });
+      }, 100);
+    },
+        N = function N(t) {
+      if (t.container = h(t.options.container), t.container instanceof h || !t.container) return !!t.options.debug && console.error("Error: Container not found");t.container.length && (t.container = t.container[0]), t.options.container = t.container, t.container.style.position = "relative";
+    },
+        T = function T(t) {
+      t.queue = new m(), t.events = new y(t), t.rows = [], t.resizer = I(t);
+    },
+        L = function L(t) {
+      var n = h("img", t.container);window.addEventListener("resize", t.resizer), t.on(t.constants.EVENT_IMAGE_LOAD, function () {
+        return t.recalculate(!1, !1);
+      }), t.on(t.constants.EVENT_IMAGE_COMPLETE, function () {
+        return t.recalculate(!0, !0);
+      }), t.options.useOwnImageLoader || e(t, n, !t.options.waitForImages), t.emit(t.constants.EVENT_INITIALIZED);
+    },
+        _ = function _(t) {
+      N(t), T(t), L(t);
+    },
+        b = function b(t) {
+      return t === Object(t) && "[object Array]" !== Object.prototype.toString.call(t);
+    },
+        O = function O(t, n) {
+      b(t) || (n.columns = t), b(t) && t.columns && (n.columns = t.columns), b(t) && t.margin && !b(t.margin) && (n.margin = { x: t.margin, y: t.margin }), b(t) && t.margin && b(t.margin) && t.margin.x && (n.margin.x = t.margin.x), b(t) && t.margin && b(t.margin) && t.margin.y && (n.margin.y = t.margin.y);
+    },
+        C = function C(t, n) {
+      return window.getComputedStyle(t, null).getPropertyValue(n);
+    },
+        M = function M(t, n) {
+      var e = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];if (t.lastcol || (t.lastcol = 0), t.rows.length < 1 && (e = !0), e) {
+        t.rows = [], t.cols = [], t.lastcol = 0;for (var r = n - 1; r >= 0; r--) {
+          t.rows[r] = 0, t.cols[r] = u(t, r);
+        }
+      } else if (t.tmpRows) {
+        t.rows = [];for (var r = n - 1; r >= 0; r--) {
+          t.rows[r] = t.tmpRows[r];
+        }
+      } else {
+        t.tmpRows = [];for (var r = n - 1; r >= 0; r--) {
+          t.tmpRows[r] = t.rows[r];
+        }
+      }
+    },
+        V = function V(t) {
+      var n = arguments.length > 1 && void 0 !== arguments[1] && arguments[1],
+          e = !(arguments.length > 2 && void 0 !== arguments[2]) || arguments[2],
+          r = n ? t.container.children : h(':scope > *:not([data-macy-complete="1"])', t.container);r = Array.from(r).filter(function (t) {
+        return null !== t.offsetParent;
+      });var o = c(t.options);return v(r, function (t) {
+        n && (t.dataset.macyComplete = 0), t.style.width = o;
+      }), t.options.trueOrder ? (f(t, r, n, e), t.emit(t.constants.EVENT_RECALCULATED)) : (p(t, r, n, e), t.emit(t.constants.EVENT_RECALCULATED));
+    },
+        R = function R() {
+      return !!window.Promise;
+    },
+        x = Object.assign || function (t) {
+      for (var n = 1; n < arguments.length; n++) {
+        var e = arguments[n];for (var r in e) {
+          Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        }
+      }return t;
+    };Array.from || (Array.from = function (t) {
+      for (var n = 0, e = []; n < t.length;) {
+        e.push(t[n++]);
+      }return e;
+    });var k = { columns: 4, margin: 2, trueOrder: !1, waitForImages: !1, useImageLoader: !0, breakAt: {}, useOwnImageLoader: !1, onInit: !1, cancelLegacy: !1, useContainerForBreakpoints: !1 };!function () {
+      try {
+        document.createElement("a").querySelector(":scope *");
+      } catch (t) {
+        !function () {
+          function t(t) {
+            return function (e) {
+              if (e && n.test(e)) {
+                var r = this.getAttribute("id");r || (this.id = "q" + Math.floor(9e6 * Math.random()) + 1e6), arguments[0] = e.replace(n, "#" + this.id);var o = t.apply(this, arguments);return null === r ? this.removeAttribute("id") : r || (this.id = r), o;
+              }return t.apply(this, arguments);
+            };
+          }var n = /:scope\b/gi,
+              e = t(Element.prototype.querySelector);Element.prototype.querySelector = function (t) {
+            return e.apply(this, arguments);
+          };var r = t(Element.prototype.querySelectorAll);Element.prototype.querySelectorAll = function (t) {
+            return r.apply(this, arguments);
+          };
+        }();
+      }
+    }();var q = function t() {
+      var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : k;if (!(this instanceof t)) return new t(n);this.options = {}, x(this.options, k, n), this.options.cancelLegacy && !R() || _(this);
+    };return q.init = function (t) {
+      return console.warn("Depreciated: Macy.init will be removed in v3.0.0 opt to use Macy directly like so Macy({ /*options here*/ }) "), new q(t);
+    }, q.prototype.recalculateOnImageLoad = function () {
+      var t = arguments.length > 0 && void 0 !== arguments[0] && arguments[0];return e(this, h("img", this.container), !t);
+    }, q.prototype.runOnImageLoad = function (t) {
+      var n = arguments.length > 1 && void 0 !== arguments[1] && arguments[1],
+          r = h("img", this.container);return this.on(this.constants.EVENT_IMAGE_COMPLETE, t), n && this.on(this.constants.EVENT_IMAGE_LOAD, t), e(this, r, n);
+    }, q.prototype.recalculate = function () {
+      var t = this,
+          n = arguments.length > 0 && void 0 !== arguments[0] && arguments[0],
+          e = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1];return e && this.queue.clear(), this.queue.add(function () {
+        return V(t, n, e);
+      });
+    }, q.prototype.remove = function () {
+      window.removeEventListener("resize", this.resizer), v(this.container.children, function (t) {
+        t.removeAttribute("data-macy-complete"), t.removeAttribute("style");
+      }), this.container.removeAttribute("style");
+    }, q.prototype.reInit = function () {
+      this.recalculate(!0, !0), this.emit(this.constants.EVENT_INITIALIZED), window.addEventListener("resize", this.resizer), this.container.style.position = "relative";
+    }, q.prototype.on = function (t, n) {
+      this.events.on(t, n);
+    }, q.prototype.emit = function (t, n) {
+      this.events.emit(t, n);
+    }, q.constants = { EVENT_INITIALIZED: "macy.initialized", EVENT_RECALCULATED: "macy.recalculated", EVENT_IMAGE_LOAD: "macy.image.load", EVENT_IMAGE_ERROR: "macy.image.error", EVENT_IMAGE_COMPLETE: "macy.images.complete", EVENT_RESIZE: "macy.resize" }, q.prototype.constants = q.constants, q;
+  });
+});
+
+// dropdown
+var menuLink = document.querySelector('.menu-item-has-children');
+var submenu = document.querySelector('.sub-menu');
+
+menuLink.addEventListener('click', function (e) {
+  e.preventDefault();
+  submenu.classList.toggle('open');
+});
+
+// search
+var btnSearch = document.querySelectorAll('.btn-search');
+var searchForm = document.querySelectorAll('#searchform');
+
+btnSearch.forEach(function (element) {
+  element.addEventListener('click', function () {
+    element.classList.add('d-none');
+    searchForm.forEach(function (searchForm) {
+      searchForm.classList.remove('d-none');
+    });
+  });
+});
+
+// mobile menu
+var hamburger = document.querySelector('.header__hamburger');
+var navigation = document.querySelector('nav');
+var menuLinks = document.querySelectorAll('nav ul li a ');
+
+hamburger.addEventListener('click', function () {
+  navigation.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  searchForm.classList.remove('d-none');
+});
+
+menuLinks.forEach(function (link) {
+  link.addEventListener('click', function () {
+    navigation.classList.toggle('open');
+    hamburger.classList.remove('active');
+  });
+});
+
+// gallery
+document.addEventListener('DOMContentLoaded', function () {
+  var macyInstance = macy$1({
+    container: '.gallery__wrapper',
+    columns: 3,
+    margin: 43,
+    trueOrder: false,
+    breakAt: {
+      760: {
+        columns: 1
+      }
+    }
+  });
+});
+
+var btnLoadMore = document.querySelector('.btn-load-more');
+var gallery = document.querySelector('.gallery__wrapper');
+
+btnLoadMore.addEventListener('click', function () {
+  navigation.classList.toggle('open');
+  gallery.classList.add('gallery__wrapper--more');
+  btnLoadMore.classList.add('d-none');
+});
+
+// modal
+jquery('.open-modal').on('click', function (e) {
+  e.preventDefault();
+  var index = jquery(this).data('index');
+  var imageSrc = jquery('.gallery__item').eq(index).find('img').attr('src');
+
+  jquery('.modal-image').attr('src', imageSrc);
+  jquery('#modal').modal('show');
+});
 
 }());

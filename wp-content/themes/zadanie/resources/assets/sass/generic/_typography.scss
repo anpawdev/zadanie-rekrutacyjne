@@ -1,6 +1,5 @@
 h1,
 h2,
-h3,
 h4 {
   font-weight: 500;
   font-family: $secondaryfont;
@@ -17,16 +16,29 @@ h1 {
 }
 
 h2 {
+  letter-spacing: -1px;
+  margin-bottom: 2rem;
+
   @include fontSize(48);
+  @include lineHeight(55);
 
   @include media-breakpoint-down(md) {
     @include fontSize(30);
     @include lineHeight(38);
   }
+
+  em {
+    letter-spacing: 0;
+  }
 }
 
 h3 {
+  font-family: $secondaryfont;
+  font-weight: 400;
+  letter-spacing: -2px;
+
   @include fontSize(40);
+  @include lineHeight(48);
 
   @include media-breakpoint-down(md) {
     @include fontSize(26);
@@ -35,6 +47,8 @@ h3 {
 }
 
 h4 {
+  letter-spacing: -1.4px;
+
   @include fontSize(28);
 
   @include media-breakpoint-down(md) {
@@ -43,7 +57,10 @@ h4 {
   }
 }
 
-p {
+p,
+span {
+  letter-spacing: -0.16px;
+
   @include fontSize(16);
   @include lineHeight(24);
 
@@ -53,7 +70,9 @@ p {
   }
 }
 
-a {
+a,
+::placeholder,
+input {
   @include fontSize(14);
   @include lineHeight(20);
 
@@ -61,4 +80,9 @@ a {
     @include fontSize(12);
     @include lineHeight(16);
   }
+}
+
+em {
+  font-family: $italicfont;
+  letter-spacing: 1px;
 }

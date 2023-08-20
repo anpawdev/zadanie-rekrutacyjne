@@ -447,6 +447,171 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_64df09e63fac6": {
+                    "key": "layout_64df09e63fac6",
+                    "name": "gallery_page_home",
+                    "label": "Gallery",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_64df09e63fac8",
+                            "label": "Tytuł sekcji",
+                            "name": "gallery_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_64df09e63fac9",
+                            "label": "Nagłówek sekcji",
+                            "name": "gallery_heading",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_64df09e63fac7",
+                            "label": "Galeria",
+                            "name": "gallery",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Dodaj wiersz",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_64df09e63facc",
+                                    "label": "Obrazek",
+                                    "name": "gallery_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "id",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium",
+                                    "parent_repeater": "field_64df09e63fac7"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_64defa8f9e7e9": {
+                    "key": "layout_64defa8f9e7e9",
+                    "name": "baner_page_home",
+                    "label": "Baner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_64defa909e7ec",
+                            "label": "Tytuł sekcji",
+                            "name": "baner_title",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_64defa909e7ed",
+                            "label": "Tekst",
+                            "name": "baner_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_64defa909e7ee",
+                            "label": "Button",
+                            "name": "baner_cta",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -472,5 +637,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1692292315
+    "modified": 1692338759
 }

@@ -4,19 +4,86 @@
 
   @include fontSize(16);
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &-primary {
     background-color: $secondarycolor;
     padding: 0.75rem 1.5rem 0.875rem;
+    border: 1px solid transparent;
+
+    &:hover {
+      color: $secondarycolor;
+      background-color: transparent;
+      border: 1px solid $secondarycolor;
+    }
   }
 
   &-outline {
     border: 1px solid $secondarycolor;
     color: $secondarycolor;
-    padding: 0.75rem 1.375rem 0.875rem;
 
     &:hover {
       color: $white;
       background-color: $secondarycolor;
+
+      svg path {
+        fill: $white;
+      }
+    }
+  }
+
+  &-border {
+    padding: 0.75rem 1.375rem 0.875rem;
+  }
+
+  &-outline--border {
+    border: 1px solid $white;
+
+    &:hover {
+      @include colors-hover;
+
+      svg path {
+        fill: $secondarycolor;
+      }
+    }
+  }
+
+  &-white {
+    background-color: $white;
+    border: 1px solid $white;
+    color: $secondarycolor;
+    padding: 0.625rem 1.5rem 0.75rem;
+  }
+
+  &-green {
+    &:hover {
+      @include colors-hover;
+    }
+  }
+
+  &-load-more {
+    border: 1px solid $dark;
+    padding: 0.75rem 1.438rem;
+    z-index: 12;
+    position: absolute;
+
+    @include media-breakpoint-up(md) {
+      left: 0;
+      right: 0;
+      bottom: 89px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    svg {
+      margin: -5px 0 3px 4px;
+      animation: moveDown 1s ease-in-out infinite;
     }
   }
 }

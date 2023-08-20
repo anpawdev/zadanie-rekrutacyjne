@@ -1,1 +1,37 @@
-//
+.hero {
+  .carousel,
+  & {
+    @include media-breakpoint-up(lg) {
+      min-height: 737px;
+    }
+
+    @include media-breakpoint-only(md) {
+      min-height: 462px;
+    }
+  }
+
+  &__text {
+    padding: 3rem 1rem 3rem 0;
+
+    @include media-breakpoint-up(xxl) {
+      padding: 9rem 5rem 9rem 2rem;
+    }
+
+    p {
+      letter-spacing: 0;
+      margin: 1.5rem 0;
+
+      @include media-breakpoint-up(lg) {
+        margin: 2.9rem 3rem 4.4rem 0;
+      }
+    }
+  }
+
+  &__image {
+    max-height: 737px;
+
+    @include media-breakpoint-only(md) {
+      max-height: 462px;
+    }
+  }
+}

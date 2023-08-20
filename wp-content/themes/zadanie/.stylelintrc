@@ -2,6 +2,7 @@
   "extends": "@tonik/stylelint-config-scss",
   "rules": {
     "indentation": 2,
-    "order/properties-order": null
+    "order/properties-order": null,
+    "selector-no-qualifying-type": null
   }
 }

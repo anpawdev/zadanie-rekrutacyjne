@@ -1,0 +1,12 @@
+input {
+  border-bottom: 1px solid $dark;
+  appearance: none;
+  box-shadow: none;
+  outline: none;
+
+  &[type="submit"] {
+    width: 20px;
+    height: 23px;
+    background: url("../images/icons/icon-search.svg") bottom no-repeat;
+  }
+}

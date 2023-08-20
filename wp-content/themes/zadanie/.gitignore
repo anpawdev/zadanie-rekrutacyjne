@@ -3,6 +3,7 @@
 
 # Project folders
 node_modules/
+public/
 
 # Log files
 npm-debug.log
