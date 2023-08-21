@@ -2,7 +2,7 @@
   max-height: 1650px;
 
   @include media-breakpoint-down(sm) {
-    max-height: 1480px;
+    max-height: 1360px;
   }
 
   @include media-breakpoint-up(md) {
@@ -15,6 +15,13 @@
       left: 0;
       background: linear-gradient(360deg, $primarycolor 0%, rgba(214, 183, 158, 0) 100%);
       z-index: 10;
+    }
+  }
+
+  img {
+    @include media-breakpoint-down(sm) {
+      max-height: 320px;
+      object-fit: cover;
     }
   }
 

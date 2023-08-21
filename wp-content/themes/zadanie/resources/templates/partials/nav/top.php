@@ -14,8 +14,8 @@
 	));
 	?>
 	<div class="d-md-none mt-2rem">
-		<form method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
-			<input type="text" class="field border-top-0 border-left-0 border-right-0" name=" s" id="s" placeholder="<?php esc_attr_e('Szukaj', 'zadanie'); ?>" />
+		<form method="get" id="search" action="<?php echo esc_url(home_url('/')); ?>" class="searchform">
+			<input type="text" class="field border-top-0 border-left-0 border-right-0" name=" s" id="search" placeholder="<?php esc_attr_e('Szukaj', 'zadanie'); ?>" />
 			<input type="submit" class="submit border-0 px-0" name="submit" id="searchsubmit" value="" />
 		</form>
 	</div>
