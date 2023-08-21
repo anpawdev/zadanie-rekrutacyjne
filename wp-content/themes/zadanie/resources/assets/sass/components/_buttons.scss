@@ -4,8 +4,9 @@
 
   @include fontSize(16);
 
-  &:hover {
+  &:is(:hover, :focus) {
     text-decoration: none;
+    outline: none;
   }
 
   &-primary {
@@ -65,9 +66,10 @@
 
   &-load-more {
     border: 1px solid $dark;
-    padding: 0.75rem 1.438rem;
+    padding: 0.75rem 1.4rem;
     z-index: 12;
     position: absolute;
+    max-width: 123px;
 
     @include media-breakpoint-up(md) {
       left: 0;
@@ -82,7 +84,7 @@
     }
 
     svg {
-      margin: -5px 0 3px 4px;
+      margin: -5px 0 3px;
       animation: moveDown 1s ease-in-out infinite;
     }
   }

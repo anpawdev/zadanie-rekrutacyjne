@@ -13,32 +13,27 @@ menuLink.addEventListener('click', (e) => {
 })
 
 // search
-const btnSearch = document.querySelectorAll('.btn-search')
-const searchForm = document.querySelectorAll('#searchform')
+const btnSearch = document.querySelector('.btn-search')
+const searchForm = document.querySelector('#searchform')
 
-btnSearch.forEach(element => {
-  element.addEventListener('click', () => {
-    element.classList.add('d-none')
-    searchForm.forEach(searchForm => {
-      searchForm.classList.remove('d-none')
-    })
-  })
+btnSearch.addEventListener('click', () => {
+  btnSearch.classList.add('d-none')
+  searchForm.classList.remove('d-none')
 })
 
 // mobile menu
 const hamburger = document.querySelector('.header__hamburger')
 const navigation = document.querySelector('nav')
-const menuLinks = document.querySelectorAll('nav ul li a ')
+const menuLinks = document.querySelectorAll('.header nav ul li a ')
 
 hamburger.addEventListener('click', () => {
   navigation.classList.toggle('open')
   hamburger.classList.toggle('active')
-  searchForm.classList.remove('d-none')
 })
 
 menuLinks.forEach(link => {
   link.addEventListener('click', () => {
-    navigation.classList.toggle('open')
+    navigation.classList.remove('open')
     hamburger.classList.remove('active')
   })
 })
@@ -50,19 +45,21 @@ document.addEventListener('DOMContentLoaded', function () {
     columns: 3,
     margin: 43,
     trueOrder: false,
+    waitForImages: true,
     breakAt: {
       760: {
         columns: 1
       }
     }
   })
+
+  macyInstance.recalculate(true, true)
 })
 
 const btnLoadMore = document.querySelector('.btn-load-more')
 const gallery = document.querySelector('.gallery__wrapper')
 
 btnLoadMore.addEventListener('click', () => {
-  navigation.classList.toggle('open')
   gallery.classList.add('gallery__wrapper--more')
   btnLoadMore.classList.add('d-none')
 })

@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
-        <img src="" class="modal-image img-fluid">
+        <img src="#" class="modal-image img-fluid" alt="modal-image">
       </div>
     </div>
   </div>

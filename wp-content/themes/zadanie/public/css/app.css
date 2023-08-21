@@ -8050,7 +8050,8 @@ body {
   font-family: "Inter", sans-serif;
   background: #f5f0ec;
   color: #111;
-  margin: 0; }
+  margin: 0;
+  overflow-x: hidden; }
 
 a {
   color: #111;
@@ -8331,8 +8332,9 @@ nav .menu-item-has-children {
   -o-transition: 0.2s;
   transition: 0.2s;
   font-size: 1rem; }
-  .btn:hover {
-    text-decoration: none; }
+  .btn:is(:hover, :focus) {
+    text-decoration: none;
+    outline: none; }
   .btn-primary {
     background-color: #1b5b31;
     padding: 0.75rem 1.5rem 0.875rem;
@@ -8368,9 +8370,10 @@ nav .menu-item-has-children {
     color: #1b5b31; }
   .btn-load-more {
     border: 1px solid #111;
-    padding: 0.75rem 1.438rem;
+    padding: 0.75rem 1.4rem;
     z-index: 12;
-    position: absolute; }
+    position: absolute;
+    max-width: 123px; }
     @media (min-width: 768px) {
       .btn-load-more {
         left: 0;
@@ -8384,7 +8387,7 @@ nav .menu-item-has-children {
         -ms-transform: translateX(-50%);
         transform: translateX(-50%); } }
     .btn-load-more svg {
-      margin: -5px 0 3px 4px;
+      margin: -5px 0 3px;
       -webkit-animation: moveDown 1s ease-in-out infinite;
       animation: moveDown 1s ease-in-out infinite; }
 
@@ -8600,7 +8603,7 @@ input {
       height: 1px;
       bottom: -6px; }
   .offer__box p {
-    margin: 0.75rem 0 4.1875rem;
+    margin: 0.75rem 0 4.188rem;
     font-size: 0.875rem;
     line-height: 1.25rem; }
 
@@ -8633,7 +8636,7 @@ input {
   max-height: 1650px; }
   @media (max-width: 767.98px) {
     .gallery__wrapper {
-      max-height: 1480px; } }
+      max-height: 1440px; } }
   @media (min-width: 768px) {
     .gallery__wrapper::before {
       content: "";
@@ -8647,6 +8650,11 @@ input {
       background: -o-linear-gradient(bottom, #dcc1ab 0%, rgba(214, 183, 158, 0) 100%);
       background: linear-gradient(360deg, #dcc1ab 0%, rgba(214, 183, 158, 0) 100%);
       z-index: 10; } }
+  @media (max-width: 767.98px) {
+    .gallery__wrapper img {
+      height: 320px;
+      -o-object-fit: cover;
+      object-fit: cover; } }
   .gallery__wrapper--more {
     max-height: 100%; }
     .gallery__wrapper--more::before {
