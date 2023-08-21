@@ -2,7 +2,7 @@
   max-height: 1650px;
 
   @include media-breakpoint-down(sm) {
-    max-height: 1360px;
+    max-height: 1440px;
   }
 
   @include media-breakpoint-up(md) {
@@ -20,7 +20,7 @@
 
   img {
     @include media-breakpoint-down(sm) {
-      max-height: 320px;
+      height: 320px;
       object-fit: cover;
     }
   }
