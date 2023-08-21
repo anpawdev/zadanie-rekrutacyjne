@@ -28,7 +28,7 @@ btnSearch.forEach(element => {
 // mobile menu
 const hamburger = document.querySelector('.header__hamburger')
 const navigation = document.querySelector('nav')
-const menuLinks = document.querySelectorAll('nav ul li a ')
+const menuLinks = document.querySelectorAll('.header nav ul li a ')
 
 hamburger.addEventListener('click', () => {
   navigation.classList.toggle('open')
@@ -38,7 +38,7 @@ hamburger.addEventListener('click', () => {
 
 menuLinks.forEach(link => {
   link.addEventListener('click', () => {
-    navigation.classList.toggle('open')
+    navigation.classList.remove('open')
     hamburger.classList.remove('active')
   })
 })
@@ -50,12 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
     columns: 3,
     margin: 43,
     trueOrder: false,
+    waitForImages: true,
     breakAt: {
       760: {
         columns: 1
       }
     }
   })
+
+  macyInstance.recalculate(true, true)
 })
 
 const btnLoadMore = document.querySelector('.btn-load-more')
